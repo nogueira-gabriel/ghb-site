@@ -2,18 +2,21 @@
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>GHB Revegetação Ambiental | Engenharia ambiental e bioengenharia</title><meta name="description" content="Há mais de 26 anos entregando soluções integradas de revegetação, drenagem, supressão vegetal e reflorestamento para grandes empreendimentos.">
 <meta name="theme-color" content="#1E4620"><link rel="icon" href="assets/img/favicon.svg">
+<script>document.documentElement.className+=' js'</script>
 <link rel="stylesheet" href="assets/css/style.css"></head>
 <body data-root=""><div id="header"></div><main id="main">
-<section class="hero" aria-label="Destaque">
-  <!-- Substituir os gradientes por fotos reais de obra: style="background-image:url(assets/img/hero-1.jpg)" ou por <video autoplay muted loop playsinline> -->
-  <div class="hero-slide ph-1 on"></div><div class="hero-slide ph-2"></div><div class="hero-slide ph-4"></div>
+<section class="hero" aria-label="Destaque" data-hero>
+  <!-- Fotos reais de obra (catálogo em tools/fotos.json). O slider é controlado por assets/js/main.js -->
+  <div class="hero-slide on"><img src="assets/img/fotos/talude-revegetado.jpg" alt="" width="940" height="940" loading="eager" fetchpriority="high" decoding="async" style="object-position:50% 42%"></div>
+  <div class="hero-slide"><img data-src="assets/img/fotos/colaborador-talude-reservatorio.jpg" alt="" width="940" height="940" decoding="async" style="object-position:50% 38%"></div>
+  <div class="hero-slide"><img data-src="assets/img/fotos/trator-esteira-mineracao.jpg" alt="" width="940" height="940" decoding="async" style="object-position:50% 55%"></div>
+  <div class="hero-slide"><img data-src="assets/img/fotos/escavadeira-dreno-brita.jpg" alt="" width="940" height="940" decoding="async" style="object-position:50% 50%"></div>
   <div class="container">
     <span class="eyebrow" style="color:#b9d8bf">Desde 1997 · Atuação nacional</span>
     <h1>Engenharia ambiental e bioengenharia de alta complexidade.</h1>
     <p>Há mais de 26 anos entregando soluções integradas de revegetação, drenagem, supressão vegetal e reflorestamento para grandes empreendimentos.</p>
     <div class="btns"><a class="btn btn-primary" href="orcamento.html">Solicitar orçamento técnico</a><a class="btn btn-ghost" href="solucoes/index.html">Conhecer nossas soluções</a></div>
   </div>
-  <div class="hero-dots"></div>
 </section>
 
 <section class="metrics"><div class="container"><div class="metrics-grid">
@@ -37,9 +40,9 @@
     </ul>
     <a class="btn btn-primary" style="margin-top:2rem" href="institucional.html">Conheça a GHB</a></div>
   <div class="gallery reveal" aria-label="Galeria da equipe em operação">
-    <div class="ph ph-2 big"><span class="cap">Hidrossemeadura em talude industrial</span></div>
-    <div class="ph ph-4"><span class="cap">Caminhão pipa — frota própria</span></div>
-    <div class="ph ph-3"><span class="cap">Área revegetada</span></div>
+    <button type="button" class="g-item big" data-lightbox="home" data-full="assets/img/fotos/equipe-epi-escavadeira.jpg" data-alt="Profissional de capacete acompanhando a operação de uma escavadeira em frente de obra" data-cap="Acompanhamento técnico em campo" aria-label="Ampliar foto: Acompanhamento técnico em campo"><img src="assets/img/fotos/equipe-epi-escavadeira.jpg" alt="" width="940" height="940" loading="lazy" decoding="async"><span class="cap">Acompanhamento técnico em campo</span></button>
+    <button type="button" class="g-item" data-lightbox="home" data-full="assets/img/fotos/caminhao-ghb-frota.jpg" data-alt="Caminhão basculante da frota GHB em frente de obra" data-cap="Caminhão basculante — frota própria" aria-label="Ampliar foto: Caminhão basculante — frota própria"><img src="assets/img/fotos/caminhao-ghb-frota-sm.jpg" srcset="assets/img/fotos/caminhao-ghb-frota-sm.jpg 560w, assets/img/fotos/caminhao-ghb-frota.jpg 940w" sizes="(max-width:640px) 92vw, (max-width:1000px) 46vw, 380px" alt="" width="560" height="560" loading="lazy" decoding="async"><span class="cap">Caminhão basculante — frota própria</span></button>
+    <button type="button" class="g-item" data-lightbox="home" data-full="assets/img/fotos/talude-revegetado.jpg" data-alt="Talude revegetado, com biomanta nas partes mais altas e torre de transmissão ao fundo" data-cap="Talude revegetado" aria-label="Ampliar foto: Talude revegetado"><img src="assets/img/fotos/talude-revegetado-sm.jpg" srcset="assets/img/fotos/talude-revegetado-sm.jpg 560w, assets/img/fotos/talude-revegetado.jpg 940w" sizes="(max-width:640px) 92vw, (max-width:1000px) 46vw, 380px" alt="" width="560" height="560" loading="lazy" decoding="async"><span class="cap">Talude revegetado</span></button>
   </div>
 </div></section>
 
@@ -68,4 +71,4 @@
   <p>Nossa equipe técnica e comercial está pronta para dimensionar a solução ideal para o seu edital ou demanda corporativa.</p>
   <a class="btn btn-light" href="orcamento.html">Solicitar proposta técnica</a>
 </div></section>
-</main><div id="footer"></div><script src="assets/js/main.js"></script></body></html>
+</main><div id="footer"></div><script src="assets/js/fotos.js"></script><script src="assets/js/main.js"></script></body></html>

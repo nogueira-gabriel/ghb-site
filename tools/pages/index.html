@@ -1,15 +1,17 @@
 <!-- title: GHB Revegetação Ambiental | Engenharia ambiental e bioengenharia -->
 <!-- desc: Há mais de 26 anos entregando soluções integradas de revegetação, drenagem, supressão vegetal e reflorestamento para grandes empreendimentos. -->
-<section class="hero" aria-label="Destaque">
-  <!-- Substituir os gradientes por fotos reais de obra: style="background-image:url({root}assets/img/hero-1.jpg)" ou por <video autoplay muted loop playsinline> -->
-  <div class="hero-slide ph-1 on"></div><div class="hero-slide ph-2"></div><div class="hero-slide ph-4"></div>
+<section class="hero" aria-label="Destaque" data-hero>
+  <!-- Fotos reais de obra (catálogo em tools/fotos.json). O slider é controlado por assets/js/main.js -->
+  <div class="hero-slide on">{{foto revegetado decor eager pos=50%/42%}}</div>
+  <div class="hero-slide">{{foto talude decor defer pos=50%/38%}}</div>
+  <div class="hero-slide">{{foto trator decor defer pos=50%/55%}}</div>
+  <div class="hero-slide">{{foto dreno decor defer pos=50%/50%}}</div>
   <div class="container">
     <span class="eyebrow" style="color:#b9d8bf">Desde 1997 · Atuação nacional</span>
     <h1>Engenharia ambiental e bioengenharia de alta complexidade.</h1>
     <p>Há mais de 26 anos entregando soluções integradas de revegetação, drenagem, supressão vegetal e reflorestamento para grandes empreendimentos.</p>
     <div class="btns"><a class="btn btn-primary" href="{root}orcamento.html">Solicitar orçamento técnico</a><a class="btn btn-ghost" href="{root}solucoes/index.html">Conhecer nossas soluções</a></div>
   </div>
-  <div class="hero-dots"></div>
 </section>
 
 <section class="metrics"><div class="container"><div class="metrics-grid">
@@ -33,9 +35,9 @@
     </ul>
     <a class="btn btn-primary" style="margin-top:2rem" href="{root}institucional.html">Conheça a GHB</a></div>
   <div class="gallery reveal" aria-label="Galeria da equipe em operação">
-    <div class="ph ph-2 big"><span class="cap">Hidrossemeadura em talude industrial</span></div>
-    <div class="ph ph-4"><span class="cap">Caminhão pipa — frota própria</span></div>
-    <div class="ph ph-3"><span class="cap">Área revegetada</span></div>
+    {{gitem equipe home big}}
+    {{gitem caminhao home}}
+    {{gitem revegetado home}}
   </div>
 </div></section>
 

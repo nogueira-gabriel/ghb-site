@@ -1,5 +1,10 @@
 /* GHB — layout compartilhado, componentes e validações */
 const ROOT = document.body.dataset.root || '';
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+const IMG=ROOT+'assets/img/';
+const ico=(n,s=18)=>`<img class="ico-img" src="${IMG}icons/${n}.svg" alt="" width="${s}" height="${s}" aria-hidden="true">`;
+// Contatos institucionais. TODO: trocar LINKEDIN/INSTAGRAM pelos perfis oficiais da GHB.
+const EMAIL='ghbrevegetacao@ghbrevegetacao.com.br',LINKEDIN='https://www.linkedin.com',INSTAGRAM='https://www.instagram.com';
 const I = {
   drop:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M3 21h18"/></svg>',
   leaf:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 19c0-8 5-14 15-15-1 10-7 15-15 15z"/><path d="M5 19l8-8"/></svg>',
@@ -16,46 +21,65 @@ const I = {
   menu:'<svg width="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
   dots:'<svg width="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>',
   x:'<svg width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  chevL:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
+  chevR:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>',
+  pause:'<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>',
+  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.6v12.8a1 1 0 0 0 1.5.86l10.6-6.4a1 1 0 0 0 0-1.72L9.5 4.74A1 1 0 0 0 8 5.6z"/></svg>',
   lock:'<svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>'
 };
 const SERVICES = [
-  {slug:'drenagem',icon:'drop',t:'Drenagem & contenção estrutural',a:'Muros de gabião, rip-rap, biorretentores de sedimentos e controle hídrico de taludes.',tag:'Drenagem'},
-  {slug:'bioengenharia',icon:'leaf',t:'Bioengenharia de solos',a:'Hidrossemeadura mecanizada, biomantas, biomassa projetada e plantio de capim vetiver.',tag:'Bioengenharia'},
-  {slug:'supressao-vegetal',icon:'saw',t:'Supressão vegetal mecanizada',a:'Limpeza de vegetação de grande porte com Feller Bunchers, escavadeiras multifuncionais e manejo de fauna/flora.',tag:'Supressão'},
-  {slug:'reflorestamento',icon:'tree',t:'Reflorestamento e plantio compensatório',a:'Recomposição florestal nativa, manutenção, cercamento de áreas e controle de pragas agrícolas/florestais.',tag:'Reflorestamento'}
+  {slug:'drenagem',icon:'drop',foto:'dreno',t:'Drenagem & contenção estrutural',a:'Muros de gabião, rip-rap, biorretentores de sedimentos e controle hídrico de taludes.',tag:'Drenagem'},
+  {slug:'bioengenharia',icon:'leaf',foto:'biomanta',t:'Bioengenharia de solos',a:'Hidrossemeadura mecanizada, biomantas, biomassa projetada e plantio de capim vetiver.',tag:'Bioengenharia'},
+  {slug:'supressao-vegetal',icon:'saw',foto:'trator',t:'Supressão vegetal mecanizada',a:'Limpeza de vegetação de grande porte com Feller Bunchers, escavadeiras multifuncionais e manejo de fauna/flora.',tag:'Supressão'},
+  {slug:'reflorestamento',icon:'tree',foto:'muda',t:'Reflorestamento e plantio compensatório',a:'Recomposição florestal nativa, manutenção, cercamento de áreas e controle de pragas agrícolas/florestais.',tag:'Reflorestamento'}
 ];
+/* ATENÇÃO: só as FOTOS dos cases são reais (catálogo em tools/fotos.json). Títulos, números, locais e
+   depoimentos abaixo são EXEMPLOS e precisam ser trocados pelos dados reais de cada obra antes de publicar. */
 const CASES = [
-  {id:'talude-complexo-minerario',t:'Estabilização de talude e hidrossemeadura — Complexo minerário',seg:'Mineração',svc:'Bioengenharia',area:'45.000 m²',prazo:'60 dias',local:'Quadrilátero Ferrífero/MG',ph:1,
+  {id:'talude-complexo-minerario',t:'Estabilização de talude e hidrossemeadura — Complexo minerário',seg:'Mineração',svc:'Bioengenharia',area:'45.000 m²',prazo:'60 dias',local:'Quadrilátero Ferrífero/MG',foto:'revegetado',gal:['revegetado','talude','biomanta'],
    desc:'Recuperação de taludes de pilha de estéril com hidrossemeadura mecanizada, aplicação de biomanta antierosiva e canaletas de drenagem superficial, garantindo cobertura vegetal antes do período chuvoso.',
    kpis:[['45.000 m²','área tratada'],['60 dias','prazo de execução'],['92%','cobertura vegetal em 90 dias'],['0','acidentes com afastamento']],
    quote:['Entrega dentro do cronograma e com rigor de SSMA compatível com o nosso padrão corporativo.','Gerência de Meio Ambiente — mineradora cliente']},
-  {id:'rodovia-protecao-taludes',t:'Proteção de taludes de corte com biomanta — Concessionária rodoviária',seg:'Rodovias',svc:'Bioengenharia',area:'28.000 m²',prazo:'45 dias',local:'BR-040/MG',ph:2,
+  {id:'rodovia-protecao-taludes',t:'Proteção de taludes de corte com biomanta — Concessionária rodoviária',seg:'Rodovias',svc:'Bioengenharia',area:'28.000 m²',prazo:'45 dias',local:'BR-040/MG',foto:'biomanta',gal:['biomanta','talude','revegetado'],
    desc:'Aplicação de biomantas e biomassa projetada em taludes de corte de alta inclinação, com plantio de capim vetiver nas cristas para estabilização profunda.',
    kpis:[['28.000 m²','área protegida'],['45 dias','prazo'],['12 km','de trecho atendido'],['100%','conformidade com projeto']],
    quote:['Solução definitiva para os pontos críticos de erosão do trecho.','Coordenação de Conservação — concessionária']},
-  {id:'ferrovia-drenagem',t:'Drenagem e gabiões em faixa de domínio — Ferrovia',seg:'Ferrovias',svc:'Drenagem',area:'3,2 km',prazo:'90 dias',local:'Região Central/MG',ph:4,
+  {id:'ferrovia-drenagem',t:'Drenagem e gabiões em faixa de domínio — Ferrovia',seg:'Ferrovias',svc:'Drenagem',area:'3,2 km',prazo:'90 dias',local:'Região Central/MG',foto:'dreno',gal:['dreno','carga','caminhao'],
    desc:'Implantação de muros de gabião, rip-rap e dispositivos de dissipação de energia ao longo da faixa de domínio ferroviária.',
    kpis:[['3,2 km','de drenagem'],['1.800 m³','de gabião'],['90 dias','prazo'],['0','paralisações da via']],
    quote:['Execução sem interferir na operação ferroviária.','Engenharia de Via Permanente']},
-  {id:'supressao-linha-transmissao',t:'Supressão vegetal mecanizada — Linha de transmissão',seg:'Energia',svc:'Supressão',area:'120 ha',prazo:'75 dias',local:'Norte de Minas/MG',ph:6,
+  {id:'supressao-linha-transmissao',t:'Supressão vegetal mecanizada — Linha de transmissão',seg:'Energia',svc:'Supressão',area:'120 ha',prazo:'75 dias',local:'Norte de Minas/MG',foto:'trator',gal:['trator','carga','equipe'],
    desc:'Supressão mecanizada com Feller Bunchers e escavadeiras florestais, com resgate e afugentamento de fauna e romaneio do material lenhoso.',
    kpis:[['120 ha','suprimidos'],['75 dias','prazo'],['3.400 m³','lenha romaneada'],['100%','fauna acompanhada']],
    quote:['Equipe técnica e frota própria fizeram a diferença no prazo.','Gestão Ambiental de Obra — transmissora']},
-  {id:'reflorestamento-compensatorio',t:'Plantio compensatório de espécies nativas — APP',seg:'Mineração',svc:'Reflorestamento',area:'38 ha',prazo:'24 meses (manutenção)',local:'Conselheiro Lafaiete/MG',ph:3,
+  {id:'reflorestamento-compensatorio',t:'Plantio compensatório de espécies nativas — APP',seg:'Mineração',svc:'Reflorestamento',area:'38 ha',prazo:'24 meses (manutenção)',local:'Conselheiro Lafaiete/MG',foto:'muda',gal:['muda','revegetado','equipe'],
    desc:'Recomposição florestal com mais de 60 espécies nativas da Mata Atlântica, cercamento, controle de formigas e manutenção por 24 meses.',
    kpis:[['63.000','mudas plantadas'],['38 ha','recompostos'],['94%','índice de sobrevivência'],['60+','espécies nativas']],
    quote:['Relatórios de monitoramento impecáveis para o órgão ambiental.','Consultoria ambiental parceira']},
-  {id:'porto-hidrossemeadura',t:'Revegetação de áreas de bota-fora — Terminal portuário',seg:'Infraestrutura',svc:'Bioengenharia',area:'60.000 m²',prazo:'50 dias',local:'Litoral/ES',ph:5,
+  {id:'porto-hidrossemeadura',t:'Revegetação de áreas de bota-fora — Terminal portuário',seg:'Infraestrutura',svc:'Bioengenharia',area:'60.000 m²',prazo:'50 dias',local:'Litoral/ES',foto:'talude',gal:['talude','revegetado','biomanta'],
    desc:'Hidrossemeadura com fixadores de alta aderência em solo arenoso salino e controle de sedimentos com biorretentores.',
    kpis:[['60.000 m²','revegetados'],['50 dias','prazo'],['85%','cobertura em 60 dias'],['ISO','padrões atendidos']],
    quote:['Resultado acima do esperado em solo muito desafiador.','Meio Ambiente — terminal portuário']}
 ];
-function caseCard(c){return `<article class="case reveal" data-seg="${c.seg}" data-svc="${c.svc}"><div class="ph ph-${c.ph}"><span class="cap">Foto real da obra</span></div><div class="case-body"><div class="tags"><span class="tag">${c.seg}</span><span class="tag">${c.svc}</span></div><h3>${c.t}</h3><p class="meta"><b>Área:</b> ${c.area} | <b>Prazo:</b> ${c.prazo}<br>${c.local}</p><a class="btn btn-outline btn-sm" href="${ROOT}obras/case.html?id=${c.id}">Ver case completo →</a></div></article>`}
-function serviceCard(s){return `<article class="card reveal"><div class="ico">${I[s.icon]}</div><h3>${s.t}</h3><p><b>Aplicações:</b> ${s.a}</p><div class="links"><a href="${ROOT}solucoes/${s.slug}.html">Saiba mais →</a><a href="${ROOT}obras/index.html?svc=${s.tag}">Ver obras</a></div></article>`}
+
+// <img> de uma foto do catálogo (FOTO, gerado de tools/fotos.json). sm = versão 560px para cards.
+function foto(k,o={}){
+  const p=FOTO[k],base=`${IMG}fotos/${p.file}`,n=o.sm?560:940;
+  const set=o.sm?` srcset="${base}-sm.jpg 560w, ${base}.jpg 940w" sizes="(max-width:640px) 92vw, (max-width:1000px) 46vw, 380px"`:'';
+  return `<img src="${base}${o.sm?'-sm':''}.jpg"${set} alt="${o.decor?'':p.alt}" width="${n}" height="${n}" loading="lazy" decoding="async">`}
+// miniatura de galeria que abre o lightbox (grupo = fotos navegáveis juntas)
+function gitem(k,grp,big){
+  const p=FOTO[k];
+  return `<button type="button" class="g-item${big?' big':''}" data-lightbox="${grp}" data-full="${IMG}fotos/${p.file}.jpg" data-alt="${p.alt}" data-cap="${p.cap}" aria-label="Ampliar foto: ${p.cap}">${foto(k,{sm:!big,decor:true})}<span class="cap">${p.cap}</span></button>`}
+function caseCard(c){return `<article class="case reveal" data-seg="${c.seg}" data-svc="${c.svc}"><a class="case-media" href="${ROOT}obras/case.html?id=${c.id}" tabindex="-1" aria-hidden="true">${foto(c.foto,{sm:true,decor:true})}</a><div class="case-body"><div class="tags"><span class="tag">${c.seg}</span><span class="tag">${c.svc}</span></div><h3>${c.t}</h3><p class="meta"><b>Área:</b> ${c.area} | <b>Prazo:</b> ${c.prazo}<br>${c.local}</p><a class="btn btn-outline btn-sm" href="${ROOT}obras/case.html?id=${c.id}">Ver case completo →</a></div></article>`}
+function serviceCard(s){return `<article class="card card-photo reveal"><a class="card-media" href="${ROOT}solucoes/${s.slug}.html" tabindex="-1" aria-hidden="true">${foto(s.foto,{sm:true,decor:true})}</a><div class="card-body"><div class="ico">${I[s.icon]}</div><h3>${s.t}</h3><p><b>Aplicações:</b> ${s.a}</p><div class="links"><a href="${ROOT}solucoes/${s.slug}.html">Saiba mais →</a><a href="${ROOT}obras/index.html?svc=${s.tag}">Ver obras</a></div></div></article>`}
+function topbar(){
+  return `<div class="topbar"><div class="container"><div class="topbar-contact"><a href="tel:+553137645000">${ico('telefone-branco',16)}<span>(31) 3764-5000</span></a><a class="topbar-mail" href="mailto:${EMAIL}">${ico('email-branco',16)}<span>${EMAIL}</span></a></div>
+  <div class="topbar-social"><a href="${LINKEDIN}" target="_blank" rel="noopener" aria-label="LinkedIn da GHB">${ico('linkedin-branco',18)}</a><a href="${INSTAGRAM}" target="_blank" rel="noopener" aria-label="Instagram da GHB">${ico('instagram-branco',18)}</a></div></div></div>`}
 
 function header(){
   const p=location.pathname, act=k=>p.includes(k)?'active':'';
-  return `<a class="skip" href="#main">Pular para o conteúdo</a><header class="site-header"><div class="container nav">
+  return `<a class="skip" href="#main">Pular para o conteúdo</a>${topbar()}<header class="site-header"><div class="container nav">
   <a class="logo" href="${ROOT}index.html" aria-label="GHB — página inicial"><span class="logo-mark">GHB</span><span class="logo-text">GHB<small>Revegetação Ambiental</small></span></a>
   <ul class="menu" id="menu"><li><a class="${act('institucional')}" href="${ROOT}institucional.html">A GHB</a></li><li><a class="${act('solucoes')}" href="${ROOT}solucoes/index.html">Soluções</a></li><li><a class="${act('obras')}" href="${ROOT}obras/index.html">Obras</a></li><li><a class="${act('conteudos')}" href="${ROOT}conteudos.html">Conteúdos</a></li><li><a class="${act('contato')}" href="${ROOT}contato.html">Contato</a></li></ul>
   <div class="nav-cta"><button class="btn btn-outline btn-sm hide-md" data-open-login>${I.lock} Área do colaborador</button><a class="btn btn-primary btn-sm" href="${ROOT}orcamento.html">Solicitar orçamento B2B</a>
@@ -75,20 +99,25 @@ function header(){
   <button class="btn btn-primary" type="submit" style="justify-content:center">Acessar Intranet</button><a href="#" id="forgot" style="font-size:.85rem;text-align:center">Esqueceu a senha?</a></form></div></div>`;
 }
 function footer(){
+  const line=(i,h)=>`<li class="f-line">${ico(i+'-branco')}<span>${h}</span></li>`;
   return `<footer class="site-footer"><div class="container foot-grid">
   <div><a class="logo" href="${ROOT}index.html"><span class="logo-mark">GHB</span><span class="logo-text">GHB<small style="color:#9fc0a6">Revegetação Ambiental</small></span></a>
   <p style="margin:1rem 0">Engenharia ambiental e bioengenharia de alta complexidade para mineração, ferrovias, rodovias, portos e energia. Desde 1997.</p>
   <div class="badge-row"><span class="badge">ISO 9001</span><span class="badge">ISO 14001</span><span class="badge">ISO 45001</span></div></div>
   <div><h4>Soluções</h4><ul>${SERVICES.map(s=>`<li><a href="${ROOT}solucoes/${s.slug}.html">${s.t}</a></li>`).join('')}</ul></div>
-  <div><h4>Contato & Unidades</h4><ul><li><b style="color:#fff">Sede:</b> Rodovia BR 482, nº 1516 — Conselheiro Lafaiete/MG</li><li><b style="color:#fff">Escritório:</b> R. Antônio de Albuquerque Brandão, 10 — Conselheiro Lafaiete/MG</li><li><a href="tel:+553137645000">(31) 3764-5000</a> / <a href="tel:+553137613347">(31) 3761-3347</a></li><li><a href="mailto:ghbrevegetacao@ghbrevegetacao.com.br">ghbrevegetacao@ghbrevegetacao.com.br</a></li></ul></div>
-  <div><h4>Links rápidos</h4><ul><li><a href="${ROOT}intranet/index.html">Intranet</a></li><li><a href="${ROOT}trabalhe-conosco.html">Trabalhe conosco</a></li><li><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></li></ul></div></div>
+  <div><h4>Contato & Unidades</h4><ul>
+    ${line('localizacao','<b>Sede:</b> Rodovia BR 482, nº 1516 — Conselheiro Lafaiete/MG')}
+    ${line('localizacao','<b>Escritório:</b> R. Antônio de Albuquerque Brandão, 10 — Conselheiro Lafaiete/MG')}
+    ${line('telefone','<a href="tel:+553137645000">(31) 3764-5000</a> / <a href="tel:+553137613347">(31) 3761-3347</a>')}
+    ${line('email',`<a href="mailto:${EMAIL}">${EMAIL}</a>`)}</ul></div>
+  <div><h4>Links rápidos</h4><ul><li><a href="${ROOT}intranet/index.html">Intranet</a></li><li><a href="${ROOT}trabalhe-conosco.html">Trabalhe conosco</a></li></ul>
+    <h4 style="margin-top:1.6rem">Redes sociais</h4><ul class="social"><li><a href="${LINKEDIN}" target="_blank" rel="noopener">${ico('linkedin-branco',22)}LinkedIn</a></li><li><a href="${INSTAGRAM}" target="_blank" rel="noopener">${ico('instagram-branco',22)}Instagram</a></li></ul></div></div>
   <div class="container foot-bottom"><span>2026 © GHB Revegetação Ambiental. Todos os direitos reservados.</span><a href="${ROOT}politicas.html#lgpd">Políticas de Privacidade</a></div></footer>`;
 }
 document.getElementById('header').outerHTML=header();
 document.getElementById('footer').outerHTML=footer();
 
 // Interações globais
-const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
 const drawer=$('#drawer'),dbg=$('.drawer-bg'),login=$('#login');
 $$('[data-open-drawer]').forEach(b=>b.onclick=()=>{drawer.classList.add('open');dbg.classList.add('open')});
 $$('[data-close-drawer]').forEach(b=>b.onclick=()=>{drawer.classList.remove('open');dbg.classList.remove('open')});
@@ -124,13 +153,30 @@ const cd=$('#caseDetail');
 if(cd){const c=CASES.find(x=>x.id===new URLSearchParams(location.search).get('id'))||CASES[0];document.title=c.t+' | GHB';
   $('#cTitle').textContent=c.t;$('#cCrumb').textContent=c.t;$('#cTags').innerHTML=`<span class="tag">${c.seg}</span><span class="tag">${c.svc}</span>`;$('#cLocal').textContent=c.local;$('#cDesc').textContent=c.desc;
   $('#cKpis').innerHTML=c.kpis.map(k=>`<div><strong>${k[0]}</strong>${k[1]}</div>`).join('');
-  $('#cGallery').innerHTML=[c.ph,(c.ph%6)+1,((c.ph+1)%6)+1].map((p,i)=>`<div class="ph ph-${p} ${i?'':'big'}"><span class="cap">${['Antes','Durante a execução','Resultado final'][i]}</span></div>`).join('');
+  $('#cGallery').innerHTML=c.gal.map((k,i)=>gitem(k,'case',i===0)).join('');
+  const hi=$('#cHeroImg');if(hi)hi.src=`${IMG}fotos/${FOTO[c.foto].file}.jpg`;
   $('#cQuote').innerHTML=`“${c.quote[0]}”<cite>— ${c.quote[1]}</cite>`;
   $('#cRelated').innerHTML=CASES.filter(x=>x.id!==c.id&&(x.svc===c.svc||x.seg===c.seg)).slice(0,3).map(caseCard).join('')||CASES.filter(x=>x.id!==c.id).slice(0,3).map(caseCard).join('')}
 
-// Hero slider
-const hs=$$('.hero-slide');if(hs.length>1){const dots=$('.hero-dots');let i=0;dots.innerHTML=hs.map((_,k)=>`<button aria-label="Slide ${k+1}"></button>`).join('');const db=$$('button',dots);
-  const go=k=>{hs[i].classList.remove('on');db[i].classList.remove('on');i=k;hs[i].classList.add('on');db[i].classList.add('on')};db.forEach((b,k)=>b.onclick=()=>go(k));go(0);setInterval(()=>go((i+1)%hs.length),6000)}
+// Imagens com data-src (slides 2+ do hero) só são baixadas depois do load da página, para não competir com a primeira foto
+const loadDeferred=()=>$$('img[data-src]').forEach(i=>{i.src=i.dataset.src;i.removeAttribute('data-src')});
+addEventListener('load',()=>setTimeout(loadDeferred,1200));
+// Hero: slider de fotos com barras de progresso, setas e botão de pausa (o tempo de cada foto é a própria animação da barra)
+const hero=$('[data-hero]');
+if(hero){const slides=$$('.hero-slide',hero);
+  if(slides.length>1){let cur=0;
+    const ctrl=document.createElement('div');ctrl.className='hero-ctrl';
+    ctrl.innerHTML=`<div class="hero-bars" role="group" aria-label="Escolher foto">${slides.map((_,k)=>`<button type="button" aria-label="Foto ${k+1} de ${slides.length}"><i></i></button>`).join('')}</div>
+      <div class="hero-btns"><button type="button" class="hb-prev" aria-label="Foto anterior">${I.chevL}</button><button type="button" class="hb-toggle"><span class="ic-pause">${I.pause}</span><span class="ic-play">${I.play}</span></button><button type="button" class="hb-next" aria-label="Próxima foto">${I.chevR}</button></div>`;
+    hero.appendChild(ctrl);
+    const bars=$$('.hero-bars button',ctrl),toggle=$('.hb-toggle',ctrl);
+    const go=(k,first)=>{if(!first)loadDeferred();slides[cur].classList.remove('on');bars[cur].classList.remove('on');cur=(k+slides.length)%slides.length;slides[cur].classList.add('on');void bars[cur].offsetWidth;bars[cur].classList.add('on');
+      bars.forEach((b,j)=>j===cur?b.setAttribute('aria-current','true'):b.removeAttribute('aria-current'))};
+    const setPaused=p=>{hero.classList.toggle('is-paused',p);toggle.setAttribute('aria-label',p?'Retomar apresentação':'Pausar apresentação')};
+    bars.forEach((b,k)=>b.onclick=()=>go(k));
+    $('.hb-prev',ctrl).onclick=()=>go(cur-1);$('.hb-next',ctrl).onclick=()=>go(cur+1);toggle.onclick=()=>setPaused(!hero.classList.contains('is-paused'));
+    ctrl.addEventListener('animationend',e=>{if(e.target.closest('button')===bars[cur])go(cur+1)});
+    setPaused(matchMedia('(prefers-reduced-motion: reduce)').matches);go(0,true)}}
 
 // Formulários
 const FREE=/@(gmail|hotmail|outlook|live|yahoo|bol|uol|icloud|terra|ig|msn|aol|proton(mail)?)\.(com|com\.br|me)(\.br)?$/i;
@@ -161,7 +207,19 @@ $$('form[data-validate]').forEach(form=>{
     form.style.display='none';const s=form.nextElementSibling;if(s&&s.classList.contains('form-success')){s.classList.add('show');s.scrollIntoView({behavior:'smooth',block:'center'})}})
 });
 
-// Galeria interativa (lightbox simples)
-$$('.gallery .ph').forEach(p=>p.onclick=()=>{const m=document.createElement('div');m.className='modal open';m.innerHTML=`<div class="ph ${p.className.replace('big','')}" style="width:min(1000px,100%);height:70vh">${p.innerHTML}</div>`;m.onclick=()=>m.remove();document.body.appendChild(m)});
+// Lightbox das galerias de fotos ([data-lightbox="grupo"]): setas, Esc, foco preso e retorno do foco
+const lb=document.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');lb.setAttribute('aria-label','Galeria de fotos');
+lb.innerHTML=`<button type="button" class="lb-close" aria-label="Fechar">${I.x}</button><button type="button" class="lb-prev" aria-label="Foto anterior">${I.chevL}</button><figure><img alt=""><figcaption></figcaption></figure><button type="button" class="lb-next" aria-label="Próxima foto">${I.chevR}</button>`;
+document.body.appendChild(lb);
+let lbItems=[],lbI=0,lbFrom=null;
+const lbShow=i=>{lbI=(i+lbItems.length)%lbItems.length;const it=lbItems[lbI],im=$('img',lb);im.src=it.dataset.full;im.alt=it.dataset.alt;$('figcaption',lb).textContent=it.dataset.cap;lb.classList.toggle('single',lbItems.length<2)};
+const lbClose=()=>{lb.classList.remove('open');document.body.style.overflow='';if(lbFrom)lbFrom.focus()};
+document.addEventListener('click',e=>{const it=e.target.closest('[data-lightbox]');
+  if(it){lbItems=$$(`[data-lightbox="${it.dataset.lightbox}"]`);lbFrom=it;lbShow(lbItems.indexOf(it));lb.classList.add('open');document.body.style.overflow='hidden';$('.lb-close',lb).focus();return}
+  if(!lb.classList.contains('open'))return;
+  if(e.target===lb||e.target.closest('.lb-close'))lbClose();else if(e.target.closest('.lb-prev'))lbShow(lbI-1);else if(e.target.closest('.lb-next'))lbShow(lbI+1)});
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')lbClose();else if(e.key==='ArrowLeft')lbShow(lbI-1);else if(e.key==='ArrowRight')lbShow(lbI+1);
+  else if(e.key==='Tab'){const f=$$('button',lb).filter(b=>b.offsetParent!==null),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
 
 observe();
