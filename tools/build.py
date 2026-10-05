@@ -22,7 +22,8 @@ HEAD = '''<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><meta name="description" content="{desc}">
 <meta name="theme-color" content="#1E4620"><link rel="icon" href="{root}assets/img/favicon.svg">
-<script>document.documentElement.className+=' js'</script>
+<link rel="preload" href="{root}assets/fonts/montserrat-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{root}assets/fonts/open-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{root}assets/css/style.css"></head>
 <body data-root="{root}"><div id="header"></div><main id="main">
 '''

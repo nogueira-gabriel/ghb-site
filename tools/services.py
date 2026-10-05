@@ -34,10 +34,10 @@ S = [
   ben=['Cumprimento de condicionantes e TCCAs','Altos índices de sobrevivência','Relatórios para órgãos ambientais','Ganho de biodiversidade e ESG']),
 ]
 for s in S:
-    subs = ''.join(f'<div class="card reveal"><h3>{a}</h3><p>{b}</p></div>' for a, b in s['subs'])
+    subs = ''.join(f'<div class="card"><h3>{a}</h3><p>{b}</p></div>' for a, b in s['subs'])
     rows = ''.join(f'<tr><td><b>{a}</b></td><td>{b}</td><td>{c}</td></tr>' for a, b, c in s['table'])
     apps = ''.join(f'<li>{a}</li>' for a in s['apps'])
-    ben = ''.join(f'<div class="card reveal"><div class="ico">✓</div><h3>{b}</h3></div>' for b in s['ben'])
+    ben = ''.join(f'<div class="card"><div class="ico">✓</div><h3>{b}</h3></div>' for b in s['ben'])
     hero = '{{foto %s decor eager class=ph-bg}}' % s['hero']
     gal = ''.join('{{gitem %s svc-%s%s}}' % (k, s['slug'], ' big' if i == 0 else '') for i, k in enumerate(s['fotos']))
     opts = ''.join(f'<option{" selected" if t==s["title"] else ""}>{t}</option>' for t in [x['title'] for x in S])
@@ -46,11 +46,11 @@ for s in S:
 <section class="page-hero has-photo">{hero}<div class="container">
   <nav class="crumb" aria-label="Breadcrumb"><a href="{{root}}index.html">Home</a> › <a href="{{root}}solucoes/index.html">Soluções</a> › {s['title']}</nav>
   <h1>{s['title']}</h1><p>{s['resumo']}</p>
-  <a class="btn btn-light" href="{{root}}orcamento.html?servico={s['tag']}">Solicitar orçamento deste serviço</a>
+  <a class="btn btn-primary" href="{{root}}orcamento.html?servico={s['tag']}">Solicitar orçamento deste serviço</a>
 </div></section>
 <section class="section"><div class="container layout-side">
   <div>
-    <span class="eyebrow">Descrição técnica & aplicações</span><h2>Onde e como aplicamos</h2>
+    <h2>Descrição técnica e aplicações</h2>
     <p class="lead" style="margin-bottom:1.5rem">{s['desc']}</p>
     <ul class="check-list">{apps}</ul>
     <div class="gallery photo-row" aria-label="Fotos de obras">{gal}</div>
@@ -68,14 +68,14 @@ for s in S:
       <div class="field"><label>Telefone <span class="req">*</span></label><input data-rule="tel" name="tel"><div class="msg"></div></div>
       <div class="field"><label>Serviço</label><select name="servico">{opts}</select></div>
       <div class="field"><label>Mensagem <span class="req">*</span></label><textarea rows="3" data-rule="required" name="msg"></textarea><div class="msg"></div></div>
-      <label class="consent"><input type="checkbox" name="lgpd"> Concordo com a <a href="{{root}}politicas.html#lgpd">Política de Privacidade</a>.</label>
+      <label class="consent"><input type="checkbox" name="lgpd"><span>Concordo com a <a href="{{root}}politicas.html#lgpd">Política de Privacidade</a>.</span></label>
       <button class="btn btn-primary" style="justify-content:center">Enviar</button>
     </form>
     <div class="form-success"><h3>Mensagem enviada!</h3><p>Nossa equipe técnica retornará em breve.</p></div>
   </aside>
 </div></section>
 <section class="section alt"><div class="container">
-  <div class="head"><div><span class="eyebrow">Obras relacionadas</span><h2>Cases com {s['title'].lower()}</h2></div><a class="btn btn-outline" href="{{root}}obras/index.html?svc={s['tag']}">Ver todas</a></div>
+  <div class="head"><div><h2>Obras relacionadas</h2></div><a class="btn btn-outline" href="{{root}}obras/index.html?svc={s['tag']}">Ver todas</a></div>
   <div class="carousel" data-cases="{s['tag']}"></div>
 </div></section>
 <section class="cta-band"><div class="container"><h2>Vamos dimensionar a solução para o seu edital?</h2><p>Envie o termo de referência e receba uma proposta técnica qualificada.</p><a class="btn btn-light" href="{{root}}orcamento.html?servico={s['tag']}">Solicitar proposta técnica</a></div></section>

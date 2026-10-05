@@ -71,8 +71,8 @@ function foto(k,o={}){
 function gitem(k,grp,big){
   const p=FOTO[k];
   return `<button type="button" class="g-item${big?' big':''}" data-lightbox="${grp}" data-full="${IMG}fotos/${p.file}.jpg" data-alt="${p.alt}" data-cap="${p.cap}" aria-label="Ampliar foto: ${p.cap}">${foto(k,{sm:!big,decor:true})}<span class="cap">${p.cap}</span></button>`}
-function caseCard(c){return `<article class="case reveal" data-seg="${c.seg}" data-svc="${c.svc}"><a class="case-media" href="${ROOT}obras/case.html?id=${c.id}" tabindex="-1" aria-hidden="true">${foto(c.foto,{sm:true,decor:true})}</a><div class="case-body"><div class="tags"><span class="tag">${c.seg}</span><span class="tag">${c.svc}</span></div><h3>${c.t}</h3><p class="meta"><b>Área:</b> ${c.area} | <b>Prazo:</b> ${c.prazo}<br>${c.local}</p><a class="btn btn-outline btn-sm" href="${ROOT}obras/case.html?id=${c.id}">Ver case completo →</a></div></article>`}
-function serviceCard(s){return `<article class="card card-photo reveal"><a class="card-media" href="${ROOT}solucoes/${s.slug}.html" tabindex="-1" aria-hidden="true">${foto(s.foto,{sm:true,decor:true})}</a><div class="card-body"><div class="ico">${I[s.icon]}</div><h3>${s.t}</h3><p><b>Aplicações:</b> ${s.a}</p><div class="links"><a href="${ROOT}solucoes/${s.slug}.html">Saiba mais →</a><a href="${ROOT}obras/index.html?svc=${s.tag}">Ver obras</a></div></div></article>`}
+function caseCard(c){return `<article class="case" data-seg="${c.seg}" data-svc="${c.svc}"><a class="case-media" href="${ROOT}obras/case.html?id=${c.id}" tabindex="-1" aria-hidden="true">${foto(c.foto,{sm:true,decor:true})}</a><div class="case-body"><div class="tags"><span class="tag">${c.seg}</span><span class="tag">${c.svc}</span></div><h3>${c.t}</h3><p class="where">${c.local}</p><dl class="meta"><div><dt>Área</dt><dd>${c.area}</dd></div><div><dt>Prazo</dt><dd>${c.prazo}</dd></div></dl><a class="more" href="${ROOT}obras/case.html?id=${c.id}">Ver case completo</a></div></article>`}
+function serviceCard(s){return `<article class="plate"><a class="plate-media" href="${ROOT}solucoes/${s.slug}.html" tabindex="-1" aria-hidden="true">${foto(s.foto,{sm:true,decor:true})}</a><div class="plate-body"><div class="plate-head"><span class="plate-ico">${I[s.icon]}</span><h3>${s.t}</h3></div><p><b>Aplicações:</b> ${s.a}</p><div class="links"><a href="${ROOT}solucoes/${s.slug}.html">Saiba mais</a><a href="${ROOT}obras/index.html?svc=${s.tag}">Ver obras</a></div></div></article>`}
 function topbar(){
   return `<div class="topbar"><div class="container"><div class="topbar-contact"><a href="tel:+553137645000">${ico('telefone-branco',16)}<span>(31) 3764-5000</span></a><a class="topbar-mail" href="mailto:${EMAIL}">${ico('email-branco',16)}<span>${EMAIL}</span></a></div>
   <div class="topbar-social"><a href="${LINKEDIN}" target="_blank" rel="noopener" aria-label="LinkedIn da GHB">${ico('linkedin-branco',18)}</a><a href="${INSTAGRAM}" target="_blank" rel="noopener" aria-label="Instagram da GHB">${ico('instagram-branco',18)}</a></div></div></div>`}
@@ -93,7 +93,7 @@ function header(){
   <h4>Canais</h4><ul><li><a href="${ROOT}politicas.html#etica">Canal de ética, sugestões e reclamações</a></li><li><a href="${ROOT}trabalhe-conosco.html">Trabalhe conosco / Envio de currículos</a></li><li><a href="${ROOT}politicas.html#downloads">Downloads</a></li></ul>
   <h4>Acessibilidade</h4><ul><li><a href="#" data-a11y="big">Aumentar fonte</a></li><li><a href="#" data-a11y="contrast">Alto contraste</a></li></ul></aside>
   <div class="modal" id="login" role="dialog" aria-modal="true" aria-labelledby="lt"><div class="modal-box"><button class="icon-btn" data-close-login aria-label="Fechar">${I.x}</button>
-  <span class="eyebrow">Intranet GHB</span><h2 id="lt" style="font-size:1.5rem">Área do colaborador</h2><p style="color:var(--muted);font-size:.9rem;margin-bottom:1.2rem">Acesso restrito a colaboradores.</p>
+  <h2 id="lt" style="font-size:1.5rem">Área do colaborador</h2><p style="color:var(--muted);font-size:.9rem;margin-bottom:1.2rem">Acesso restrito a colaboradores.</p>
   <form class="form" id="loginForm" novalidate><div class="field"><label for="lu">E-mail / Usuário institucional</label><input id="lu" required autocomplete="username"><div class="msg"></div></div>
   <div class="field"><label for="lp">Senha</label><input id="lp" type="password" required autocomplete="current-password"><div class="msg"></div></div>
   <button class="btn btn-primary" type="submit" style="justify-content:center">Acessar Intranet</button><a href="#" id="forgot" style="font-size:.85rem;text-align:center">Esqueceu a senha?</a></form></div></div>`;
@@ -131,22 +131,20 @@ $('#forgot').onclick=e=>{e.preventDefault();alert('Um link de redefinição ser�
 $('#loginForm').onsubmit=e=>{e.preventDefault();let ok=true;['#lu','#lp'].forEach(s=>{const f=$(s).parentElement,v=$(s).value.trim();f.classList.toggle('err',!v);f.querySelector('.msg').textContent=v?'':'Campo obrigatório';if(!v)ok=false});
   if(ok){try{sessionStorage.setItem('ghb_user',$('#lu').value.trim())}catch(_){}location.href=ROOT+'intranet/index.html'}};
 
-// Reveal on scroll
-const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12});
-function observe(){ $$('.reveal:not(.in)').forEach(el=>io.observe(el)) }
-
 // Renderizações data-driven
 $$('[data-services]').forEach(el=>el.innerHTML=SERVICES.map(serviceCard).join(''));
 $$('[data-cases]').forEach(el=>{const f=el.dataset.cases;let list=CASES;if(f&&f!=='all'&&!/^\d+$/.test(f))list=CASES.filter(c=>c.svc===f);if(/^\d+$/.test(f))list=CASES.slice(0,+f);el.innerHTML=list.map(caseCard).join('')});
 $$('[data-icon]').forEach(el=>el.innerHTML=I[el.dataset.icon]);
 
-// Filtros de cases
+// Filtros de cases (data-single: uma aba por vez; data-max no #caseGrid: limite de cards visíveis)
 const fw=$('#caseFilters');
-if(fw){const state={seg:'Todos',svc:'Todos'};const q=new URLSearchParams(location.search);if(q.get('svc'))state.svc=q.get('svc');
-  const apply=()=>{$$('.chip',fw).forEach(c=>c.classList.toggle('on',state[c.dataset.k]===c.dataset.v));let n=0;
-    $$('#caseGrid .case').forEach(c=>{const show=(state.seg==='Todos'||c.dataset.seg===state.seg)&&(state.svc==='Todos'||c.dataset.svc===state.svc);c.style.display=show?'':'none';if(show)n++});
+if(fw){const state={seg:'Todos',svc:'Todos'},single='single' in fw.dataset,grid=$('#caseGrid'),max=+(grid.dataset.max||0);
+  const q=new URLSearchParams(location.search);if(q.get('svc'))state.svc=q.get('svc');
+  const isOn=c=>c.dataset.v==='Todos'&&single?state.seg==='Todos'&&state.svc==='Todos':state[c.dataset.k]===c.dataset.v;
+  const apply=()=>{$$('.chip',fw).forEach(c=>c.classList.toggle('on',isOn(c)));let n=0;
+    $$('.case',grid).forEach(c=>{const show=(state.seg==='Todos'||c.dataset.seg===state.seg)&&(state.svc==='Todos'||c.dataset.svc===state.svc)&&(!max||n<max);c.style.display=show?'':'none';c.classList.toggle('is-lead',show&&n===0);if(show)n++});
     $('#caseEmpty').style.display=n?'none':'block'};
-  fw.onclick=e=>{const c=e.target.closest('.chip');if(!c)return;if(c.dataset.v==='Todos'){state.seg='Todos';state.svc='Todos'}else state[c.dataset.k]=c.dataset.v;apply()};apply()}
+  fw.onclick=e=>{const c=e.target.closest('.chip');if(!c)return;if(c.dataset.v==='Todos'||single){state.seg='Todos';state.svc='Todos'}if(c.dataset.v!=='Todos')state[c.dataset.k]=c.dataset.v;apply()};apply()}
 
 // Página interna do case
 const cd=$('#caseDetail');
@@ -168,7 +166,7 @@ if(hero){const slides=$$('.hero-slide',hero);
     const ctrl=document.createElement('div');ctrl.className='hero-ctrl';
     ctrl.innerHTML=`<div class="hero-bars" role="group" aria-label="Escolher foto">${slides.map((_,k)=>`<button type="button" aria-label="Foto ${k+1} de ${slides.length}"><i></i></button>`).join('')}</div>
       <div class="hero-btns"><button type="button" class="hb-prev" aria-label="Foto anterior">${I.chevL}</button><button type="button" class="hb-toggle"><span class="ic-pause">${I.pause}</span><span class="ic-play">${I.play}</span></button><button type="button" class="hb-next" aria-label="Próxima foto">${I.chevR}</button></div>`;
-    hero.appendChild(ctrl);
+    ($('.hero-copy',hero)||hero).appendChild(ctrl);
     const bars=$$('.hero-bars button',ctrl),toggle=$('.hb-toggle',ctrl);
     const go=(k,first)=>{if(!first)loadDeferred();slides[cur].classList.remove('on');bars[cur].classList.remove('on');cur=(k+slides.length)%slides.length;slides[cur].classList.add('on');void bars[cur].offsetWidth;bars[cur].classList.add('on');
       bars.forEach((b,j)=>j===cur?b.setAttribute('aria-current','true'):b.removeAttribute('aria-current'))};
@@ -222,4 +220,3 @@ document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return
   if(e.key==='Escape')lbClose();else if(e.key==='ArrowLeft')lbShow(lbI-1);else if(e.key==='ArrowRight')lbShow(lbI+1);
   else if(e.key==='Tab'){const f=$$('button',lb).filter(b=>b.offsetParent!==null),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
 
-observe();

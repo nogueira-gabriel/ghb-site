@@ -11,6 +11,14 @@ Site estático (HTML/CSS/JS, sem dependências) seguindo o protótipo de arquite
 - `intranet/` — dashboard do colaborador (login via modal no header — **apenas demonstração no front-end**)
 - `politicas.html`, `trabalhe-conosco.html` — conteúdo do menu "escondido" (gaveta lateral)
 
+## Design
+Segue o protótipo (cores `#1E4620` / `#4A7C59` / `#F4F6F4`, Montserrat + Open Sans, raios de 6px); a identidade vem do ofício da GHB: **a página é um corte de talude**.
+- **Corte inclinado** (`--corte`, `--corte-g` em `assets/css/style.css`): foto do hero, fotos dos cards e entrada da faixa de chamada.
+- **Curvas de nível** (`assets/img/curvas-nivel*.svg`, geradas por `python3 tools/gen_contours.py [semente]`): traço verde nos fundos claros (hero, banners) e branco nos escuros (faixa de chamada, rodapé).
+- **Régua** de levantamento nos números da home (`.ruler`).
+- Fontes hospedadas em `assets/fonts/` (licença OFL em `OFL.txt`): sem chamadas ao Google Fonts.
+- Evitados de propósito: rótulos em caixa-alta acima dos títulos, setas "→" nos links, efeito de entrada em cada seção e cards que "levantam" no hover.
+
 ## Fotos reais (`assets/img/fotos/`)
 As 9 fotos enviadas (formato "4x4", 1080×1080, com moldura branca) são preparadas por `tools/process_photos.sh`:
 remove a moldura e os cantos arredondados (mantendo a marca d'água da GHB) e gera `<nome>.jpg` (940px) e `<nome>-sm.jpg` (560px, cards).

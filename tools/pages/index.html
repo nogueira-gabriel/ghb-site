@@ -2,39 +2,42 @@
 <!-- desc: Há mais de 26 anos entregando soluções integradas de revegetação, drenagem, supressão vegetal e reflorestamento para grandes empreendimentos. -->
 <section class="hero" aria-label="Destaque" data-hero>
   <!-- Fotos reais de obra (catálogo em tools/fotos.json). O slider é controlado por assets/js/main.js -->
-  <div class="hero-slide on">{{foto revegetado decor eager pos=50%/42%}}</div>
-  <div class="hero-slide">{{foto talude decor defer pos=50%/38%}}</div>
-  <div class="hero-slide">{{foto trator decor defer pos=50%/55%}}</div>
-  <div class="hero-slide">{{foto dreno decor defer pos=50%/50%}}</div>
-  <div class="container">
-    <span class="eyebrow" style="color:#b9d8bf">Desde 1997 · Atuação nacional</span>
-    <h1>Engenharia ambiental e bioengenharia de alta complexidade.</h1>
-    <p>Há mais de 26 anos entregando soluções integradas de revegetação, drenagem, supressão vegetal e reflorestamento para grandes empreendimentos.</p>
-    <div class="btns"><a class="btn btn-primary" href="{root}orcamento.html">Solicitar orçamento técnico</a><a class="btn btn-ghost" href="{root}solucoes/index.html">Conhecer nossas soluções</a></div>
+  <div class="hero-media">
+    <div class="hero-slide on">{{foto revegetado decor eager pos=50%/42%}}</div>
+    <div class="hero-slide">{{foto talude decor defer pos=50%/38%}}</div>
+    <div class="hero-slide">{{foto trator decor defer pos=50%/55%}}</div>
+    <div class="hero-slide">{{foto dreno decor defer pos=50%/50%}}</div>
+  </div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <h1>Engenharia ambiental e bioengenharia de alta complexidade.</h1>
+      <p>Há mais de 26 anos entregando soluções integradas de revegetação, drenagem, supressão vegetal e reflorestamento para grandes empreendimentos.</p>
+      <div class="btns"><a class="btn btn-primary" href="{root}orcamento.html">Solicitar orçamento técnico</a><a class="btn btn-outline" href="{root}solucoes/index.html">Conhecer nossas soluções</a></div>
+    </div>
   </div>
 </section>
 
-<section class="metrics"><div class="container"><div class="metrics-grid">
-  <div class="metric"><strong>26</strong><p>Anos de experiência técnica no mercado B2B</p></div>
-  <div class="metric"><strong>+100%</strong><p>de conformidade técnica e ambiental nas entregas</p></div>
-  <div class="metric"><strong>BR</strong><p>Atuação nacional em mineração, ferrovias, rodovias, portos e energia</p></div>
-  <div class="metric"><strong>Frota</strong><p>Própria, com equipamentos de alta capacidade</p></div>
-</div></div></section>
+<section class="ruler" aria-label="A GHB em números"><div class="container ruler-grid">
+  <div><strong>26 anos</strong><p>de experiência técnica no mercado B2B</p></div>
+  <div><strong>+100%</strong><p>de conformidade técnica e ambiental nas entregas</p></div>
+  <div><strong>Nacional</strong><p>Atuação em mineração, ferrovias, rodovias, portos e energia</p></div>
+  <div><strong>Frota própria</strong><p>e equipamentos de alta capacidade</p></div>
+</div></section>
 
 <section class="section"><div class="container">
-  <div class="head"><div><span class="eyebrow">Serviços focais</span><h2>Soluções integradas para grandes empreendimentos</h2><p class="lead">Do projeto à manutenção, com equipe técnica própria e padrão SSMA corporativo.</p></div><a class="btn btn-outline" href="{root}solucoes/index.html">Todas as soluções</a></div>
+  <div class="head"><div><h2>Soluções para obras de grande porte</h2><p class="lead">Do projeto à manutenção, com equipe técnica própria e padrão SSMA corporativo.</p></div><a class="btn btn-outline" href="{root}solucoes/index.html">Todas as soluções</a></div>
   <div class="grid g4" data-services></div>
 </div></section>
 
 <section class="section alt"><div class="container split">
-  <div class="reveal"><span class="eyebrow">Diferenciais competitivos</span><h2>Por que grandes corporações escolhem a GHB</h2>
+  <div><h2>Por que grandes corporações escolhem a GHB</h2>
     <ul class="diff-list">
       <li><span class="ico" data-icon="shield"></span><div><h3>Segurança em 1º lugar</h3><p>Padrão SSMA rigoroso para atendimento a grandes corporações.</p></div></li>
-      <li><span class="ico" data-icon="flask"></span><div><h3>Inovação & biotecnologia</h3><p>Métodos sustentáveis e insumos de alta eficiência agronômica.</p></div></li>
+      <li><span class="ico" data-icon="flask"></span><div><h3>Inovação e biotecnologia</h3><p>Métodos sustentáveis e insumos de alta eficiência agronômica.</p></div></li>
       <li><span class="ico" data-icon="doc"></span><div><h3>Rastreabilidade e governança</h3><p>Relatórios de conformidade e transparência em todas as etapas.</p></div></li>
     </ul>
     <a class="btn btn-primary" style="margin-top:2rem" href="{root}institucional.html">Conheça a GHB</a></div>
-  <div class="gallery reveal" aria-label="Galeria da equipe em operação">
+  <div class="gallery" aria-label="Galeria da equipe em operação">
     {{gitem equipe home big}}
     {{gitem caminhao home}}
     {{gitem revegetado home}}
@@ -42,23 +45,22 @@
 </div></section>
 
 <section class="section"><div class="container">
-  <div class="head"><div><span class="eyebrow">Segmentos atendidos</span><h2>Experiência em setores críticos da infraestrutura</h2></div></div>
-  <div class="grid g5">
-    <div class="seg reveal"><span data-icon="mine"></span><h3>Mineração & siderurgia</h3></div>
-    <div class="seg reveal"><span data-icon="rail"></span><h3>Ferrovias & concessionárias rodoviárias</h3></div>
-    <div class="seg reveal"><span data-icon="energy"></span><h3>Energia e oleodutos/gasodutos</h3></div>
-    <div class="seg reveal"><span data-icon="build"></span><h3>Infraestrutura & construtoras</h3></div>
-    <div class="seg reveal"><span data-icon="gov"></span><h3>Consultorias ambientais e órgãos públicos</h3></div>
+  <div class="head"><div><h2>Segmentos atendidos</h2></div></div>
+  <div class="segments">
+    <div class="seg"><span data-icon="mine"></span><h3>Mineração e siderurgia</h3></div>
+    <div class="seg"><span data-icon="rail"></span><h3>Ferrovias e concessionárias rodoviárias</h3></div>
+    <div class="seg"><span data-icon="energy"></span><h3>Energia e oleodutos/gasodutos</h3></div>
+    <div class="seg"><span data-icon="build"></span><h3>Infraestrutura e construtoras</h3></div>
+    <div class="seg"><span data-icon="gov"></span><h3>Consultorias ambientais e órgãos públicos</h3></div>
   </div>
 </div></section>
 
 <section class="section alt"><div class="container">
-  <div class="head"><div><span class="eyebrow">Obras executadas</span><h2>Cases de sucesso</h2></div><a class="btn btn-outline" href="{root}obras/index.html">Ver todas as obras</a></div>
-  <div class="filters" id="caseFilters"><span>Filtrar:</span>
-    <button class="chip" data-k="seg" data-v="Todos">Todos</button><button class="chip" data-k="seg" data-v="Mineração">Mineração</button><button class="chip" data-k="seg" data-v="Rodovias">Rodovias</button><button class="chip" data-k="seg" data-v="Ferrovias">Ferrovias</button>
-    <button class="chip" data-k="svc" data-v="Todos" hidden>Todos</button><button class="chip" data-k="svc" data-v="Bioengenharia">Bioengenharia</button></div>
-  <div class="grid g4" id="caseGrid" data-cases="4"></div>
-  <p id="caseEmpty" style="display:none">Nenhum case neste filtro. <a href="{root}obras/index.html">Ver todos</a>.</p>
+  <div class="head"><div><h2>Obras executadas</h2></div><a class="btn btn-outline" href="{root}obras/index.html">Ver todas as obras</a></div>
+  <div class="filters" id="caseFilters" data-single>
+    <button class="chip" data-k="seg" data-v="Todos">Todos</button><button class="chip" data-k="seg" data-v="Mineração">Mineração</button><button class="chip" data-k="svc" data-v="Bioengenharia">Bioengenharia</button><button class="chip" data-k="seg" data-v="Rodovias">Rodovias</button></div>
+  <div class="cases-home" id="caseGrid" data-cases="all" data-max="4"></div>
+  <p id="caseEmpty" style="display:none">Nenhum case neste filtro. <a href="{root}obras/index.html">Ver todas as obras</a>.</p>
 </div></section>
 
 <section class="cta-band"><div class="container">
