@@ -3,37 +3,37 @@
 <div class="intra">
   <nav class="intra-side" aria-label="Menu da intranet">
     <h5>Intranet</h5>
-    <a class="on" href="#">Dashboard</a><a href="#comunicados">Comunicados</a><a href="#biblioteca">Biblioteca de documentos</a><a href="#relatorios">Relatórios & transparência</a>
+    <a class="on" href="#">Dashboard</a><a href="#comunicados">Comunicados</a><a href="#biblioteca">Biblioteca de documentos</a><a href="#relatorios">Relatórios e transparência</a>
     <h5>Módulos futuros</h5>
-    <a href="#">Central de downloads <small>Em breve</small></a><a href="#">Treinamentos & integração <small>Em breve</small></a><a href="#">Calendário corporativo <small>Em breve</small></a><a href="#">Formulários internos <small>Em breve</small></a>
+    <a href="#">Central de downloads <small>Em breve</small></a><a href="#">Treinamentos e integração <small>Em breve</small></a><a href="#">Calendário corporativo <small>Em breve</small></a><a href="#">Formulários internos <small>Em breve</small></a>
     <h5>Conta</h5><a href="#" id="logout">Sair</a>
   </nav>
   <div class="intra-main">
-    <h1 style="font-size:1.8rem">Olá, <span id="who">colaborador</span></h1>
-    <p style="color:var(--muted);margin-bottom:1.6rem">Bem-vindo à intranet GHB. Segurança em primeiro lugar.</p>
+    <h1>Olá, <span id="who">colaborador</span></h1>
+    <p>Bem-vindo à intranet GHB. Segurança em primeiro lugar.</p>
     <div class="grid g2">
-      <section class="panel" id="comunicados"><h3>Comunicados internos & notícias da diretoria</h3>
-        <div class="notice"><small>SSMA · 02/10/2026</small><b>Campanha Outubro Seguro: DDS especial sobre trabalho em altura</b>Participação obrigatória em todas as frentes.</div>
-        <div class="notice"><small>Treinamento · 28/09/2026</small><b>Reciclagem NR-12 para operadores de equipamentos</b>Inscrições abertas até 15/10.</div>
-        <div class="notice"><small>Diretoria · 20/09/2026</small><b>Resultados do 3º trimestre e metas ESG</b>Mensagem da diretoria a todos os colaboradores.</div>
+      <section class="panel" id="comunicados"><h3>Comunicados internos e notícias da diretoria</h3>
+        <div class="notice"><small>SSMA, 02/10/2026</small><b>Campanha Outubro Seguro: DDS especial sobre trabalho em altura</b><p>Participação obrigatória em todas as frentes.</p></div>
+        <div class="notice"><small>Treinamento, 28/09/2026</small><b>Reciclagem NR-12 para operadores de equipamentos</b><p>Inscrições abertas até 15/10.</p></div>
+        <div class="notice"><small>Diretoria, 20/09/2026</small><b>Resultados do 3º trimestre e metas ESG</b><p>Mensagem da diretoria a todos os colaboradores.</p></div>
       </section>
       <section class="panel" id="biblioteca"><h3>Biblioteca de documentos</h3>
-        <div class="doc"><span>POP-01 — Hidrossemeadura mecanizada</span><a href="#">PDF ↓</a></div>
-        <div class="doc"><span>POP-07 — Operação de Feller Buncher</span><a href="#">PDF ↓</a></div>
-        <div class="doc"><span>Política de SSMA</span><a href="#">PDF ↓</a></div>
-        <div class="doc"><span>Formulários RH (férias, reembolso)</span><a href="#">ZIP ↓</a></div>
-        <div class="doc"><span>Código de Conduta</span><a href="#">PDF ↓</a></div>
+        <div class="doc">{{icon pdf}}<span>POP-01: Hidrossemeadura mecanizada</span><a class="link" href="#">Baixar</a></div>
+        <div class="doc">{{icon pdf}}<span>POP-07: Operação de Feller Buncher</span><a class="link" href="#">Baixar</a></div>
+        <div class="doc">{{icon pdf}}<span>Política de SSMA</span><a class="link" href="#">Baixar</a></div>
+        <div class="doc">{{icon pdf}}<span>Formulários RH (férias, reembolso)</span><a class="link" href="#">Baixar</a></div>
+        <div class="doc">{{icon pdf}}<span>Código de Conduta</span><a class="link" href="#">Baixar</a></div>
       </section>
       <section class="panel" id="relatorios"><h3>Relatórios e transparência</h3>
-        <div class="doc"><span>Relatório de igualdade salarial — 1º sem/2026</span><a href="#">PDF ↓</a></div>
-        <div class="doc"><span>Relatório de transparência 2025</span><a href="#">PDF ↓</a></div>
-        <div class="doc"><span>Relatório ESG 2025</span><a href="#">PDF ↓</a></div>
+        <div class="doc">{{icon pdf}}<span>Relatório de igualdade salarial, 1º semestre de 2026</span><a class="link" href="#">Baixar</a></div>
+        <div class="doc">{{icon pdf}}<span>Relatório de transparência 2025</span><a class="link" href="#">Baixar</a></div>
+        <div class="doc">{{icon pdf}}<span>Relatório ESG 2025</span><a class="link" href="#">Baixar</a></div>
       </section>
       <section class="panel"><h3>Módulos em desenvolvimento</h3>
-        <ul class="check-list" style="margin-top:1rem"><li>Central de downloads</li><li>Treinamentos & integração</li><li>Calendário corporativo</li><li>Formulários internos</li></ul></section>
+        <ul class="check-list" style="margin-top:16px"><li>{{icon check sm}}<span>Central de downloads</span></li><li>{{icon check sm}}<span>Treinamentos e integração</span></li><li>{{icon check sm}}<span>Calendário corporativo</span></li><li>{{icon check sm}}<span>Formulários internos</span></li></ul></section>
     </div>
   </div>
 </div>
 <script>(function(){var u=null;try{u=sessionStorage.getItem('ghb_user')}catch(e){}
-if(!u){document.addEventListener('DOMContentLoaded',function(){});setTimeout(function(){var m=document.getElementById('login');if(m)m.classList.add('open')},50)}else{document.getElementById('who').textContent=u.split('@')[0]}
+if(!u){setTimeout(function(){var m=document.getElementById('login');if(m)m.classList.add('open')},50)}else{document.getElementById('who').textContent=u.split('@')[0]}
 document.getElementById('logout').onclick=function(e){e.preventDefault();try{sessionStorage.removeItem('ghb_user')}catch(_){}location.href='../index.html'}})()</script>

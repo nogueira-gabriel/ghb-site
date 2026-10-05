@@ -1,15 +1,21 @@
-<!-- title: Obras & cases de sucesso | GHB -->
+<!-- title: Obras e cases de sucesso | GHB -->
 <!-- desc: Obras executadas pela GHB em mineração, rodovias, ferrovias, energia e infraestrutura. -->
 <section class="page-hero has-photo">{{foto talude decor eager class=ph-bg pos=50%/45%}}<div class="container">
-  <nav class="crumb"><a href="{root}index.html">Home</a> › Obras</nav>
-  <h1>Obras & cases de sucesso</h1><p>Resultados mensuráveis em projetos de alta complexidade para grandes corporações.</p>
+  <nav class="crumb" aria-label="Você está em"><ol><li><a href="{root}index.html">Home</a></li><li aria-current="page">Obras</li></ol></nav>
+  <h1>Obras e cases de sucesso</h1>
+  <p class="lead">Resultados mensuráveis em projetos de alta complexidade para grandes corporações.</p>
 </div></section>
 <section class="section"><div class="container">
-  <div id="caseFilters"><div class="filters"><span>Segmento:</span>
-    <button class="chip" data-k="seg" data-v="Todos">Todos</button><button class="chip" data-k="seg" data-v="Mineração">Mineração</button><button class="chip" data-k="seg" data-v="Rodovias">Rodovias</button><button class="chip" data-k="seg" data-v="Ferrovias">Ferrovias</button><button class="chip" data-k="seg" data-v="Energia">Energia</button><button class="chip" data-k="seg" data-v="Infraestrutura">Infraestrutura</button></div>
-  <div class="filters"><span>Tipo de serviço:</span>
-    <button class="chip" data-k="svc" data-v="Drenagem">Drenagem</button><button class="chip" data-k="svc" data-v="Bioengenharia">Bioengenharia</button><button class="chip" data-k="svc" data-v="Supressão">Supressão</button><button class="chip" data-k="svc" data-v="Reflorestamento">Reflorestamento</button></div></div>
+  <div id="caseFilters">
+    <div class="filters"><span>Segmento</span>
+      <button class="chip" data-k="seg" data-v="Todos">Todos</button><button class="chip" data-k="seg" data-v="Mineração">Mineração</button><button class="chip" data-k="seg" data-v="Rodovias">Rodovias</button><button class="chip" data-k="seg" data-v="Ferrovias">Ferrovias</button><button class="chip" data-k="seg" data-v="Energia">Energia</button><button class="chip" data-k="seg" data-v="Infraestrutura">Infraestrutura</button></div>
+    <div class="filters"><span>Tipo de serviço</span>
+      <button class="chip" data-k="svc" data-v="Drenagem">Drenagem</button><button class="chip" data-k="svc" data-v="Bioengenharia">Bioengenharia</button><button class="chip" data-k="svc" data-v="Supressão">Supressão</button><button class="chip" data-k="svc" data-v="Reflorestamento">Reflorestamento</button></div>
+  </div>
   <div class="grid g3" id="caseGrid" data-cases="all"></div>
-  <p id="caseEmpty" style="display:none;padding:2rem 0">Nenhuma obra encontrada para esta combinação de filtros.</p>
+  <p id="caseEmpty" class="muted" hidden>Nenhuma obra encontrada para esta combinação de filtros.</p>
 </div></section>
-<section class="cta-band"><div class="container"><h2>Seu projeto pode ser o próximo case.</h2><a class="btn btn-light" href="{root}orcamento.html">Solicitar proposta técnica</a></div></section>
+<section class="cta-band"><div class="container cta-inner">
+  <div><h2>Seu projeto pode ser o próximo case.</h2><p>Envie o edital ou termo de referência e receba uma proposta técnica.</p></div>
+  <a class="btn btn-light" href="{root}orcamento.html">Solicitar proposta técnica</a>
+</div></section>

@@ -2,15 +2,15 @@
 <!-- desc: Detalhes da obra: galeria, métricas e depoimento do cliente. -->
 <div id="caseDetail">
 <section class="page-hero has-photo">{{foto revegetado decor eager class=ph-bg id=cHeroImg}}<div class="container">
-  <nav class="crumb"><a href="{root}index.html">Home</a> › <a href="{root}obras/index.html">Obras</a> › <span id="cCrumb"></span></nav>
-  <div class="tags" id="cTags"></div><h1 id="cTitle"></h1><p id="cLocal"></p>
+  <nav class="crumb" aria-label="Você está em"><ol><li><a href="{root}index.html">Home</a></li><li><a href="{root}obras/index.html">Obras</a></li><li aria-current="page" id="cCrumb"></li></ol></nav>
+  <div class="tags" id="cTags"></div><h1 id="cTitle"></h1><p class="lead" id="cLocal"></p>
 </div></section>
 <section class="section"><div class="container split top">
-  <div><div class="gallery" id="cGallery"></div></div>
-  <div><h2>Desafio e solução</h2><p class="lead" id="cDesc"></p>
+  <div class="gallery" id="cGallery"></div>
+  <div><h2>Desafio e solução</h2><p class="lead" id="cDesc" style="margin-top:16px"></p>
     <div class="stat-row" id="cKpis"></div>
     <blockquote class="quote" id="cQuote"></blockquote>
-    <a class="btn btn-primary" style="margin-top:1.5rem" href="{root}orcamento.html">Quero uma solução semelhante</a></div>
+    <a class="btn btn-primary" href="{root}orcamento.html">Quero uma solução semelhante</a></div>
 </div></section>
-<section class="section alt"><div class="container"><h2>Obras relacionadas</h2><div class="grid g3" id="cRelated" style="margin-top:1.5rem"></div></div></section>
+<section class="section alt"><div class="container"><div class="section-head"><h2>Obras relacionadas</h2></div><div class="grid g3" id="cRelated"></div></div></section>
 </div>

@@ -7,6 +7,8 @@ Além de copiar os templates (substituindo {root} pelo caminho relativo até a r
       {{foto CHAVE [sm] [eager] [defer] [decor] [pos=50%/40%] [class=x] [id=y]}}  -> <img> otimizada
       (defer = só baixa depois do load da página; usado nos slides 2+ do hero)
       {{gitem CHAVE GRUPO [big]}}                                          -> miniatura que abre o lightbox
+      {{icon NOME [sm|lg]}}                                                 -> ícone do sprite (tools/icons/NOME.svg)
+  * monta o sprite de ícones (tools/icons/*.svg) e o embute no começo de cada página;
   * gera assets/js/fotos.js com o mesmo catálogo (usado pelo main.js nos cards renderizados via JS).
 """
 import html
@@ -17,6 +19,7 @@ import re
 BASE = pathlib.Path(__file__).resolve().parent.parent
 SRC = BASE / 'tools' / 'pages'
 FOTOS = json.loads((BASE / 'tools' / 'fotos.json').read_text(encoding='utf-8'))
+ICONS = BASE / 'tools' / 'icons'
 
 HEAD = '''<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -25,7 +28,7 @@ HEAD = '''<!doctype html>
 <link rel="preload" href="{root}assets/fonts/montserrat-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}assets/fonts/open-sans-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{root}assets/css/style.css"></head>
-<body data-root="{root}"><div id="header"></div><main id="main">
+<body data-root="{root}">{sprite}<div id="header"></div><main id="main">
 '''
 TAIL = '''</main><div id="footer"></div><script src="{root}assets/js/fotos.js"></script><script src="{root}assets/js/main.js"></script></body></html>
 '''
@@ -70,16 +73,37 @@ def macro_gitem(args):
                macro_foto('%s decor%s' % (key, '' if big else ' sm')), cap))
 
 
+def build_sprite():
+    """Um <symbol> por arquivo de tools/icons. Todos herdam a cor do texto (currentColor)."""
+    out = ['<svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true" focusable="false">']
+    for f in sorted(ICONS.glob('*.svg')):
+        t = f.read_text(encoding='utf-8')
+        vb = re.search(r'viewBox="([^"]+)"', t).group(1)
+        inner = re.sub(r'^.*?<svg[^>]*>|</svg>\s*$', '', t, flags=re.S).strip()
+        out.append('<symbol id="i-%s" viewBox="%s">%s</symbol>' % (f.stem, vb, inner))
+    out.append('</svg>')
+    return ''.join(out)
+
+
+def macro_icon(args):
+    name, *opts = args.split()
+    assert (ICONS / (name + '.svg')).exists(), 'ícone inexistente: ' + name
+    cls = ' '.join(['i'] + ['i-' + o for o in opts])
+    return '<svg class="%s" aria-hidden="true" focusable="false"><use href="#i-%s"/></svg>' % (cls, name)
+
+
 def expand(text):
     text = re.sub(r'\{\{\s*foto\s+([^}]*?)\s*\}\}', lambda m: macro_foto(m.group(1)), text)
-    return re.sub(r'\{\{\s*gitem\s+([^}]*?)\s*\}\}', lambda m: macro_gitem(m.group(1)), text)
+    text = re.sub(r'\{\{\s*gitem\s+([^}]*?)\s*\}\}', lambda m: macro_gitem(m.group(1)), text)
+    return re.sub(r'\{\{\s*icon\s+([^}]*?)\s*\}\}', lambda m: macro_icon(m.group(1)), text)
 
 
 # catálogo para o main.js (cards e galerias renderizados no navegador)
 (BASE / 'assets' / 'js' / 'fotos.js').write_text(
-    '/* GERADO por tools/build.py a partir de tools/fotos.json — não editar à mão. */\n'
+    '/* GERADO por tools/build.py a partir de tools/fotos.json: não editar à mão. */\n'
     'const FOTO = %s;\n' % json.dumps(FOTOS, ensure_ascii=False, indent=2), encoding='utf-8')
 
+SPRITE = build_sprite()
 for f in sorted(SRC.rglob('*.html')):
     rel = f.relative_to(SRC)
     raw = f.read_text(encoding='utf-8')
@@ -88,6 +112,6 @@ for f in sorted(SRC.rglob('*.html')):
     root = '../' * (len(rel.parts) - 1)
     out = BASE / rel
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(HEAD.format(title=meta.get('title', 'GHB'), desc=meta.get('desc', ''), root=root)
+    out.write_text(HEAD.format(title=meta.get('title', 'GHB'), desc=meta.get('desc', ''), root=root, sprite=SPRITE)
                    + body.replace('{root}', root) + TAIL.format(root=root), encoding='utf-8')
     print('ok', rel)

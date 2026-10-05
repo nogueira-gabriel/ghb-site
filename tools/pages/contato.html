@@ -1,33 +1,38 @@
 <!-- title: Contato corporativo | GHB -->
 <!-- desc: Fale com a GHB: sede e escritório em Conselheiro Lafaiete/MG. -->
 <section class="page-hero has-photo">{{foto caminhao decor eager class=ph-bg pos=50%/60%}}<div class="container">
-  <nav class="crumb"><a href="{root}index.html">Home</a> › Contato</nav>
-  <h1>Contato corporativo</h1><p>Fale com nossa equipe técnica e comercial.</p>
+  <nav class="crumb" aria-label="Você está em"><ol><li><a href="{root}index.html">Home</a></li><li aria-current="page">Contato</li></ol></nav>
+  <h1>Contato corporativo</h1>
+  <p class="lead">Fale com nossa equipe técnica e comercial.</p>
 </div></section>
 <section class="section"><div class="container split top">
   <div>
     <div class="grid g2">
-      <div class="card"><div class="ico"><img src="{root}assets/img/icons/localizacao-verde.svg" alt="" width="28" height="28"></div><h3>Sede</h3><p>Rodovia BR 482, nº 1516<br>Conselheiro Lafaiete/MG</p></div>
-      <div class="card"><div class="ico"><img src="{root}assets/img/icons/localizacao-verde.svg" alt="" width="28" height="28"></div><h3>Escritório</h3><p>R. Antônio de Albuquerque Brandão, 10<br>Conselheiro Lafaiete/MG</p></div>
-      <div class="card"><div class="ico"><img src="{root}assets/img/icons/telefone-verde.svg" alt="" width="28" height="28"></div><h3>Telefones</h3><p><a href="tel:+553137645000">(31) 3764-5000</a><br><a href="tel:+553137613347">(31) 3761-3347</a></p></div>
-      <div class="card"><div class="ico"><img src="{root}assets/img/icons/email-verde.svg" alt="" width="28" height="28"></div><h3>E-mail</h3><p><a href="mailto:ghbrevegetacao@ghbrevegetacao.com.br" style="word-break:break-all">ghbrevegetacao@ghbrevegetacao.com.br</a></p></div>
+      <div class="card card-flat"><div class="card-body"><span class="icon-box">{{icon localizacao lg}}</span><h3>Sede</h3><p>Rodovia BR 482, nº 1516<br>Conselheiro Lafaiete/MG</p></div></div>
+      <div class="card card-flat"><div class="card-body"><span class="icon-box">{{icon localizacao lg}}</span><h3>Escritório</h3><p>R. Antônio de Albuquerque Brandão, 10<br>Conselheiro Lafaiete/MG</p></div></div>
+      <div class="card card-flat"><div class="card-body"><span class="icon-box">{{icon telefone lg}}</span><h3>Telefones</h3><p><a class="link" href="tel:+553137645000">(31) 3764-5000</a><br><a class="link" href="tel:+553137613347">(31) 3761-3347</a></p></div></div>
+      <div class="card card-flat"><div class="card-body"><span class="icon-box">{{icon email lg}}</span><h3>E-mail</h3><p><a class="link" href="mailto:ghbrevegetacao@ghbrevegetacao.com.br">ghbrevegetacao@ghbrevegetacao.com.br</a></p></div></div>
     </div>
-    <div class="card social-card" style="margin-top:24px"><h3>Redes sociais</h3>
-      <ul class="social-list"><li><a href="https://www.linkedin.com" target="_blank" rel="noopener"><img src="{root}assets/img/icons/linkedin-verde.svg" alt="" width="28" height="28"> LinkedIn</a></li><li><a href="https://www.instagram.com" target="_blank" rel="noopener"><img src="{root}assets/img/icons/instagram-verde.svg" alt="" width="28" height="28"> Instagram</a></li></ul>
-    </div>
-    <iframe title="Mapa — sede GHB" style="width:100%;height:300px;border:0;border-radius:8px;margin-top:24px" loading="lazy" src="https://www.google.com/maps?q=Rodovia+BR+482+1516+Conselheiro+Lafaiete+MG&output=embed"></iframe>
+    <div class="card card-flat" style="margin-top:24px"><div class="card-body"><h3>Redes sociais</h3>
+      <ul class="social-list"><li><a href="https://www.linkedin.com" target="_blank" rel="noopener"><span class="icon-box">{{icon linkedin lg}}</span>LinkedIn</a></li><li><a href="https://www.instagram.com" target="_blank" rel="noopener"><span class="icon-box">{{icon instagram lg}}</span>Instagram</a></li></ul>
+    </div></div>
+    <iframe class="map" title="Mapa da sede da GHB" style="margin-top:24px" loading="lazy" src="https://www.google.com/maps?q=Rodovia+BR+482+1516+Conselheiro+Lafaiete+MG&output=embed"></iframe>
   </div>
-  <div class="form-box"><h2 style="font-size:1.4rem;margin-bottom:1rem">Envie uma mensagem</h2>
+  <div class="form-box"><h2>Envie uma mensagem</h2>
     <form class="form" data-validate novalidate>
-      <div class="row2"><div class="field"><label>Nome <span class="req">*</span></label><input name="nome" data-rule="required"><div class="msg"></div></div>
-      <div class="field"><label>Empresa</label><input name="empresa"></div></div>
-      <div class="row2"><div class="field"><label>E-mail <span class="req">*</span></label><input type="email" name="email" data-rule="email"><div class="msg"></div></div>
-      <div class="field"><label>Telefone <span class="req">*</span></label><input name="tel" data-rule="tel"><div class="msg"></div></div></div>
-      <div class="field"><label>Assunto</label><select name="assunto"><option>Comercial / Orçamentos</option><option>Fornecedores</option><option>Imprensa</option><option>Trabalhe conosco</option><option>Outros</option></select></div>
-      <div class="field"><label>Mensagem <span class="req">*</span></label><textarea name="msg" rows="5" data-rule="required"></textarea><div class="msg"></div></div>
-      <label class="consent"><input type="checkbox" name="lgpd"><span>Li e concordo com a <a href="{root}politicas.html#lgpd">Política de Privacidade</a>.</span></label>
-      <button class="btn btn-primary" style="justify-content:center">Enviar mensagem</button>
+      <div class="row2">
+        <div class="field"><label for="c1">Nome <span class="req">*</span></label><input id="c1" name="nome" data-rule="required" autocomplete="name"><div class="msg"></div></div>
+        <div class="field"><label for="c2">Empresa</label><input id="c2" name="empresa" autocomplete="organization"><div class="msg"></div></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="c3">E-mail <span class="req">*</span></label><input id="c3" type="email" name="email" data-rule="email" autocomplete="email"><div class="msg"></div></div>
+        <div class="field"><label for="c4">Telefone <span class="req">*</span></label><input id="c4" name="tel" data-rule="tel" inputmode="tel" autocomplete="tel"><div class="msg"></div></div>
+      </div>
+      <div class="field"><label for="c5">Assunto</label><select id="c5" name="assunto"><option>Comercial e orçamentos</option><option>Fornecedores</option><option>Imprensa</option><option>Trabalhe conosco</option><option>Outros</option></select></div>
+      <div class="field"><label for="c6">Mensagem <span class="req">*</span></label><textarea id="c6" name="msg" rows="5" data-rule="required"></textarea><div class="msg"></div></div>
+      <label class="consent"><input type="checkbox" name="lgpd"><span>Li e concordo com a <a class="link" href="{root}politicas.html#lgpd">Política de Privacidade</a>. <span class="req">*</span></span></label>
+      <button class="btn btn-primary btn-block" type="submit">Enviar mensagem</button>
     </form>
-    <div class="form-success"><h3>Mensagem enviada!</h3><p>Retornaremos em breve.</p></div>
+    <div class="form-success" role="status"><h3>Mensagem enviada</h3><p>Retornaremos em breve.</p></div>
   </div>
 </div></section>

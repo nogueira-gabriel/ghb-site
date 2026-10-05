@@ -1,23 +1,29 @@
 <!-- title: Políticas, canais e downloads | GHB -->
 <!-- desc: Políticas corporativas (LGPD, Compliance, SSMA), canal de ética e downloads. -->
-<section class="page-hero"><div class="container">
-  <nav class="crumb"><a href="{root}index.html">Home</a> › Políticas & downloads</nav>
-  <h1>Políticas corporativas & transparência</h1><p>Governança, conformidade e canais de relacionamento.</p>
-</div></section>
-<section class="section"><div class="container" style="max-width:860px;display:grid;gap:48px">
-  <div id="lgpd"><h2>Política de Privacidade & LGPD</h2><p>A GHB trata dados pessoais em conformidade com a Lei nº 13.709/2018 (LGPD). Os dados enviados por formulários são usados exclusivamente para responder solicitações comerciais, processos seletivos e obrigações legais, sendo armazenados com controles de segurança. O titular pode solicitar acesso, correção ou exclusão pelo e-mail <a href="mailto:ghbrevegetacao@ghbrevegetacao.com.br">ghbrevegetacao@ghbrevegetacao.com.br</a>.</p></div>
-  <div id="compliance"><h2>Compliance & Código de Conduta</h2><p>Atuamos com tolerância zero a corrupção, em linha com a Lei nº 12.846/2013, e exigimos o mesmo padrão de fornecedores e parceiros.</p></div>
-  <div id="ssma"><h2>Política de SSMA</h2><p>Saúde, segurança e meio ambiente são valores inegociáveis: identificação de perigos, controle de riscos, prevenção da poluição e melhoria contínua.</p></div>
-  <div id="etica" class="panel"><h2>Canal de ética, sugestões e reclamações</h2><p style="margin-bottom:1rem">Relatos podem ser anônimos e são tratados com confidencialidade e sem retaliação.</p>
+<section class="page-hero">
+  <div class="container">
+    <nav class="crumb" aria-label="Você está em"><ol><li><a href="{root}index.html">Home</a></li><li aria-current="page">Políticas e downloads</li></ol></nav>
+    <h1>Políticas corporativas e transparência</h1>
+    <p class="lead" style="margin-bottom:0">Governança, conformidade e canais de relacionamento.</p>
+  </div>
+</section>
+<section class="section"><div class="container layout-side">
+<div>
+  <div class="prose-block" id="lgpd"><h2>Política de Privacidade e LGPD</h2><p>A GHB trata dados pessoais em conformidade com a Lei nº 13.709/2018 (LGPD). Os dados enviados por formulários são usados exclusivamente para responder solicitações comerciais, processos seletivos e obrigações legais, sendo armazenados com controles de segurança. O titular pode solicitar acesso, correção ou exclusão pelo e-mail <a class="link" href="mailto:ghbrevegetacao@ghbrevegetacao.com.br">ghbrevegetacao@ghbrevegetacao.com.br</a>.</p></div>
+  <div class="prose-block" id="compliance"><h2>Compliance e Código de Conduta</h2><p>Atuamos com tolerância zero a corrupção, em linha com a Lei nº 12.846/2013, e exigimos o mesmo padrão de fornecedores e parceiros.</p></div>
+  <div class="prose-block" id="ssma"><h2>Política de SSMA</h2><p>Saúde, segurança e meio ambiente são valores inegociáveis: identificação de perigos, controle de riscos, prevenção da poluição e melhoria contínua.</p></div>
+  <div class="prose-block" id="etica"><div class="panel" style="padding:32px"><h2>Canal de ética, sugestões e reclamações</h2><p class="muted" style="margin-bottom:24px">Relatos podem ser anônimos e são tratados com confidencialidade e sem retaliação.</p>
     <form class="form" data-validate novalidate>
-      <div class="field"><label>Tipo</label><select><option>Denúncia</option><option>Sugestão</option><option>Reclamação</option><option>Elogio</option></select></div>
-      <div class="field"><label>Relato <span class="req">*</span></label><textarea rows="4" data-rule="required"></textarea><div class="msg"></div></div>
-      <div class="field"><label>E-mail para retorno (opcional)</label><input type="email"></div>
-      <button class="btn btn-primary" style="justify-content:center">Enviar relato</button></form>
-    <div class="form-success"><h3>Relato registrado.</h3><p>Protocolo gerado. Obrigado pela contribuição.</p></div></div>
-  <div id="downloads"><h2>Downloads</h2>
-    <div class="doc"><span>Código de Conduta GHB</span><a href="#">PDF ↓</a></div>
-    <div class="doc"><span>Política de SSMA</span><a href="#">PDF ↓</a></div>
-    <div class="doc"><span>Relatório de transparência e igualdade salarial</span><a href="#">PDF ↓</a></div>
-    <div class="doc"><span>Apresentação institucional</span><a href="#">PDF ↓</a></div></div>
+      <div class="field"><label for="e1">Tipo</label><select id="e1"><option>Denúncia</option><option>Sugestão</option><option>Reclamação</option><option>Elogio</option></select></div>
+      <div class="field"><label for="e2">Relato <span class="req">*</span></label><textarea id="e2" rows="4" data-rule="required"></textarea><div class="msg"></div></div>
+      <div class="field"><label for="e3">E-mail para retorno (opcional)</label><input id="e3" type="email"><div class="msg"></div></div>
+      <button class="btn btn-primary btn-block" type="submit">Enviar relato</button></form>
+    <div class="form-success" role="status"><h3>Relato registrado</h3><p>Protocolo gerado. Obrigado pela contribuição.</p></div></div></div>
+  <div class="prose-block" id="downloads"><h2>Downloads</h2>
+    <div class="doc">{{icon pdf}}<span>Código de Conduta GHB</span><a class="link" href="#">Baixar PDF</a></div>
+    <div class="doc">{{icon pdf}}<span>Política de SSMA</span><a class="link" href="#">Baixar PDF</a></div>
+    <div class="doc">{{icon pdf}}<span>Relatório de transparência e igualdade salarial</span><a class="link" href="#">Baixar PDF</a></div>
+    <div class="doc">{{icon pdf}}<span>Apresentação institucional</span><a class="link" href="#">Baixar PDF</a></div></div>
+</div>
+<aside class="toc" aria-label="Nesta página"><h3>Nesta página</h3><ul><li><a href="#lgpd">Privacidade e LGPD</a></li><li><a href="#compliance">Compliance e Código de Conduta</a></li><li><a href="#ssma">Política de SSMA</a></li><li><a href="#etica">Canal de ética</a></li><li><a href="#downloads">Downloads</a></li></ul></aside>
 </div></section>

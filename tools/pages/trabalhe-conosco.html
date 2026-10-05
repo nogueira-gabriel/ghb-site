@@ -1,18 +1,26 @@
 <!-- title: Trabalhe conosco | GHB -->
 <!-- desc: Envie seu currículo e faça parte da equipe GHB. -->
 <section class="page-hero has-photo">{{foto equipe decor eager class=ph-bg pos=50%/35%}}<div class="container">
-  <nav class="crumb"><a href="{root}index.html">Home</a> › Trabalhe conosco</nav>
-  <h1>Trabalhe conosco</h1><p>Engenheiros, técnicos, operadores e equipes de campo: construa sua carreira com segurança e propósito.</p>
+  <nav class="crumb" aria-label="Você está em"><ol><li><a href="{root}index.html">Home</a></li><li aria-current="page">Trabalhe conosco</li></ol></nav>
+  <h1>Trabalhe conosco</h1>
+  <p class="lead">Engenheiros, técnicos, operadores e equipes de campo: construa sua carreira com segurança e propósito.</p>
 </div></section>
-<section class="section"><div class="container" style="max-width:760px"><div class="form-box">
+<section class="section"><div class="container layout-side"><div class="form-box">
+  <h2>Envie seu currículo</h2>
   <form class="form" data-validate novalidate>
-    <div class="row2"><div class="field"><label>Nome completo <span class="req">*</span></label><input name="nome" data-rule="required"><div class="msg"></div></div>
-    <div class="field"><label>E-mail <span class="req">*</span></label><input name="email" type="email" data-rule="email"><div class="msg"></div></div></div>
-    <div class="row2"><div class="field"><label>Telefone <span class="req">*</span></label><input name="tel" data-rule="tel"><div class="msg"></div></div>
-    <div class="field"><label>Área de interesse <span class="req">*</span></label><select name="area" data-rule="required"><option value="">Selecione…</option><option>Engenharia / Técnico</option><option>Operação de equipamentos</option><option>Equipe de campo</option><option>SSMA</option><option>Administrativo</option></select><div class="msg"></div></div></div>
-    <div class="field"><label>Currículo (PDF)</label><input type="file" accept=".pdf"></div>
-    <label class="consent"><input type="checkbox" name="lgpd"><span>Autorizo o tratamento dos meus dados para fins de recrutamento, conforme a <a href="{root}politicas.html#lgpd">LGPD</a>.</span></label>
-    <button class="btn btn-primary" style="justify-content:center">Enviar currículo</button>
+    <div class="row2">
+      <div class="field"><label for="t1">Nome completo <span class="req">*</span></label><input id="t1" name="nome" data-rule="required" autocomplete="name"><div class="msg"></div></div>
+      <div class="field"><label for="t2">E-mail <span class="req">*</span></label><input id="t2" name="email" type="email" data-rule="email" autocomplete="email"><div class="msg"></div></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="t3">Telefone <span class="req">*</span></label><input id="t3" name="tel" data-rule="tel" inputmode="tel" autocomplete="tel"><div class="msg"></div></div>
+      <div class="field"><label for="t4">Área de interesse <span class="req">*</span></label><select id="t4" name="area" data-rule="required"><option value="">Selecione</option><option>Engenharia e técnico</option><option>Operação de equipamentos</option><option>Equipe de campo</option><option>SSMA</option><option>Administrativo</option></select><div class="msg"></div></div>
+    </div>
+    <div class="field"><label for="t5">Currículo (PDF)</label><input id="t5" type="file" accept=".pdf"></div>
+    <label class="consent"><input type="checkbox" name="lgpd"><span>Autorizo o tratamento dos meus dados para fins de recrutamento, conforme a <a class="link" href="{root}politicas.html#lgpd">LGPD</a>. <span class="req">*</span></span></label>
+    <button class="btn btn-primary btn-block" type="submit">Enviar currículo</button>
   </form>
-  <div class="form-success"><h3>Currículo recebido!</h3><p>Ele ficará em nosso banco de talentos por 12 meses.</p></div>
-</div></div></section>
+  <div class="form-success" role="status"><h3>Currículo recebido</h3><p>Ele ficará em nosso banco de talentos por 12 meses.</p></div>
+</div>
+<aside class="toc" aria-label="Contato do RH"><h3>Dúvidas sobre vagas?</h3><p class="muted" style="margin-bottom:16px;font-size:.9375rem">Fale com a nossa equipe.</p><ul class="contact-list"><li>{{icon telefone}}<a class="link" href="tel:+553137645000">(31) 3764-5000</a></li><li>{{icon email}}<a class="link" href="mailto:ghbrevegetacao@ghbrevegetacao.com.br">ghbrevegetacao@ghbrevegetacao.com.br</a></li></ul></aside>
+</div></section>

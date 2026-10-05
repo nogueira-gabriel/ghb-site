@@ -1,42 +1,44 @@
 <!-- title: GHB Revegetação Ambiental | Engenharia ambiental e bioengenharia -->
 <!-- desc: Há mais de 26 anos entregando soluções integradas de revegetação, drenagem, supressão vegetal e reflorestamento para grandes empreendimentos. -->
 <section class="hero" aria-label="Destaque" data-hero>
-  <!-- Fotos reais de obra (catálogo em tools/fotos.json). O slider é controlado por assets/js/main.js -->
-  <div class="hero-media">
-    <div class="hero-slide on">{{foto revegetado decor eager pos=50%/42%}}</div>
-    <div class="hero-slide">{{foto talude decor defer pos=50%/38%}}</div>
-    <div class="hero-slide">{{foto trator decor defer pos=50%/55%}}</div>
-    <div class="hero-slide">{{foto dreno decor defer pos=50%/50%}}</div>
-  </div>
-  <div class="container hero-inner">
+  <div class="container hero-grid">
     <div class="hero-copy">
       <h1>Engenharia ambiental e bioengenharia de alta complexidade.</h1>
-      <p>Há mais de 26 anos entregando soluções integradas de revegetação, drenagem, supressão vegetal e reflorestamento para grandes empreendimentos.</p>
+      <p class="lead">Há mais de 26 anos entregando soluções integradas de revegetação, drenagem, supressão vegetal e reflorestamento para grandes empreendimentos.</p>
       <div class="btns"><a class="btn btn-primary" href="{root}orcamento.html">Solicitar orçamento técnico</a><a class="btn btn-outline" href="{root}solucoes/index.html">Conhecer nossas soluções</a></div>
+    </div>
+    <!-- Fotos reais de obra (catálogo em tools/fotos.json). O slider é controlado por assets/js/main.js -->
+    <div class="hero-media" role="group" aria-label="Fotos de obras">
+      <div class="hero-slide on">{{foto revegetado decor eager pos=50%/42%}}</div>
+      <div class="hero-slide">{{foto talude decor defer pos=50%/38%}}</div>
+      <div class="hero-slide">{{foto trator decor defer pos=50%/55%}}</div>
+      <div class="hero-slide">{{foto dreno decor defer pos=50%/50%}}</div>
     </div>
   </div>
 </section>
 
-<section class="ruler" aria-label="A GHB em números"><div class="container ruler-grid">
-  <div><strong>26 anos</strong><p>de experiência técnica no mercado B2B</p></div>
-  <div><strong>+100%</strong><p>de conformidade técnica e ambiental nas entregas</p></div>
-  <div><strong>Nacional</strong><p>Atuação em mineração, ferrovias, rodovias, portos e energia</p></div>
-  <div><strong>Frota própria</strong><p>e equipamentos de alta capacidade</p></div>
+<section class="stats" aria-label="A GHB em números"><div class="container stats-grid">
+  <div><span class="stat-num">26 anos</span><span class="stat-label">de experiência técnica no mercado B2B</span></div>
+  <div><span class="stat-num">+100%</span><span class="stat-label">de conformidade técnica e ambiental nas entregas</span></div>
+  <div><span class="stat-num">Nacional</span><span class="stat-label">Atuação em mineração, ferrovias, rodovias, portos e energia</span></div>
+  <div><span class="stat-num">Frota própria</span><span class="stat-label">e equipamentos de alta capacidade</span></div>
 </div></section>
 
 <section class="section"><div class="container">
-  <div class="head"><div><h2>Soluções para obras de grande porte</h2><p class="lead">Do projeto à manutenção, com equipe técnica própria e padrão SSMA corporativo.</p></div><a class="btn btn-outline" href="{root}solucoes/index.html">Todas as soluções</a></div>
+  <div class="section-head"><div><h2>Soluções para obras de grande porte</h2><p class="lead">Do projeto à manutenção, com equipe técnica própria e padrão SSMA corporativo.</p></div><a class="btn btn-outline" href="{root}solucoes/index.html">Todas as soluções</a></div>
   <div class="grid g4" data-services></div>
 </div></section>
 
 <section class="section alt"><div class="container split">
-  <div><h2>Por que grandes corporações escolhem a GHB</h2>
-    <ul class="diff-list">
-      <li><span class="ico" data-icon="shield"></span><div><h3>Segurança em 1º lugar</h3><p>Padrão SSMA rigoroso para atendimento a grandes corporações.</p></div></li>
-      <li><span class="ico" data-icon="flask"></span><div><h3>Inovação e biotecnologia</h3><p>Métodos sustentáveis e insumos de alta eficiência agronômica.</p></div></li>
-      <li><span class="ico" data-icon="doc"></span><div><h3>Rastreabilidade e governança</h3><p>Relatórios de conformidade e transparência em todas as etapas.</p></div></li>
+  <div>
+    <h2>Por que grandes corporações escolhem a GHB</h2>
+    <ul class="feature-list">
+      <li><span class="icon-box">{{icon seguranca lg}}</span><div><h3>Segurança em 1º lugar</h3><p>Padrão SSMA rigoroso para atendimento a grandes corporações.</p></div></li>
+      <li><span class="icon-box">{{icon inovacao lg}}</span><div><h3>Inovação e biotecnologia</h3><p>Métodos sustentáveis e insumos de alta eficiência agronômica.</p></div></li>
+      <li><span class="icon-box">{{icon governanca lg}}</span><div><h3>Rastreabilidade e governança</h3><p>Relatórios de conformidade e transparência em todas as etapas.</p></div></li>
     </ul>
-    <a class="btn btn-primary" style="margin-top:2rem" href="{root}institucional.html">Conheça a GHB</a></div>
+    <a class="btn btn-primary" href="{root}institucional.html">Conheça a GHB</a>
+  </div>
   <div class="gallery" aria-label="Galeria da equipe em operação">
     {{gitem equipe home big}}
     {{gitem caminhao home}}
@@ -45,26 +47,25 @@
 </div></section>
 
 <section class="section"><div class="container">
-  <div class="head"><div><h2>Segmentos atendidos</h2></div></div>
+  <div class="section-head"><h2>Segmentos atendidos</h2></div>
   <div class="segments">
-    <div class="seg"><span data-icon="mine"></span><h3>Mineração e siderurgia</h3></div>
-    <div class="seg"><span data-icon="rail"></span><h3>Ferrovias e concessionárias rodoviárias</h3></div>
-    <div class="seg"><span data-icon="energy"></span><h3>Energia e oleodutos/gasodutos</h3></div>
-    <div class="seg"><span data-icon="build"></span><h3>Infraestrutura e construtoras</h3></div>
-    <div class="seg"><span data-icon="gov"></span><h3>Consultorias ambientais e órgãos públicos</h3></div>
+    <div class="seg"><span class="icon-box">{{icon mineracao lg}}</span><h3>Mineração e siderurgia</h3></div>
+    <div class="seg"><span class="icon-box">{{icon ferrovias lg}}</span><h3>Ferrovias e concessionárias rodoviárias</h3></div>
+    <div class="seg"><span class="icon-box">{{icon energia lg}}</span><h3>Energia e oleodutos/gasodutos</h3></div>
+    <div class="seg"><span class="icon-box">{{icon infraestrutura lg}}</span><h3>Infraestrutura e construtoras</h3></div>
+    <div class="seg"><span class="icon-box">{{icon orgaos lg}}</span><h3>Consultorias ambientais e órgãos públicos</h3></div>
   </div>
 </div></section>
 
 <section class="section alt"><div class="container">
-  <div class="head"><div><h2>Obras executadas</h2></div><a class="btn btn-outline" href="{root}obras/index.html">Ver todas as obras</a></div>
+  <div class="section-head"><h2>Obras executadas</h2><a class="btn btn-outline" href="{root}obras/index.html">Ver todas as obras</a></div>
   <div class="filters" id="caseFilters" data-single>
     <button class="chip" data-k="seg" data-v="Todos">Todos</button><button class="chip" data-k="seg" data-v="Mineração">Mineração</button><button class="chip" data-k="svc" data-v="Bioengenharia">Bioengenharia</button><button class="chip" data-k="seg" data-v="Rodovias">Rodovias</button></div>
-  <div class="cases-home" id="caseGrid" data-cases="all" data-max="4"></div>
-  <p id="caseEmpty" style="display:none">Nenhum case neste filtro. <a href="{root}obras/index.html">Ver todas as obras</a>.</p>
+  <div class="grid g4" id="caseGrid" data-cases="all" data-max="4"></div>
+  <p id="caseEmpty" class="muted" hidden>Nenhum case neste filtro. <a class="link" href="{root}obras/index.html">Ver todas as obras</a>.</p>
 </div></section>
 
-<section class="cta-band"><div class="container">
-  <h2>Precisa de uma solução em engenharia ambiental para o seu projeto?</h2>
-  <p>Nossa equipe técnica e comercial está pronta para dimensionar a solução ideal para o seu edital ou demanda corporativa.</p>
+<section class="cta-band"><div class="container cta-inner">
+  <div><h2>Precisa de uma solução em engenharia ambiental para o seu projeto?</h2><p>Nossa equipe técnica e comercial está pronta para dimensionar a solução ideal para o seu edital ou demanda corporativa.</p></div>
   <a class="btn btn-light" href="{root}orcamento.html">Solicitar proposta técnica</a>
 </div></section>

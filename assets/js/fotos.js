@@ -1,4 +1,4 @@
-/* GERADO por tools/build.py a partir de tools/fotos.json — não editar à mão. */
+/* GERADO por tools/build.py a partir de tools/fotos.json: não editar à mão. */
 const FOTO = {
   "biomanta": {
     "file": "biomanta-talude-canaleta",
@@ -13,7 +13,7 @@ const FOTO = {
   "trator": {
     "file": "trator-esteira-mineracao",
     "alt": "Trator de esteira da frota GHB em área de terraplenagem, com mata ao fundo",
-    "cap": "Trator de esteira — frota própria"
+    "cap": "Trator de esteira da frota própria"
   },
   "dreno": {
     "file": "escavadeira-dreno-brita",
@@ -33,7 +33,7 @@ const FOTO = {
   "caminhao": {
     "file": "caminhao-ghb-frota",
     "alt": "Caminhão basculante da frota GHB em frente de obra",
-    "cap": "Caminhão basculante — frota própria"
+    "cap": "Caminhão basculante da frota própria"
   },
   "carga": {
     "file": "escavadeira-carregando-caminhao",
